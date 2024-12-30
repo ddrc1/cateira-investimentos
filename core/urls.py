@@ -19,6 +19,7 @@ from django.urls import path, include
 from rest_framework import routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from rest_framework.permissions import AllowAny
 
 router = routers.DefaultRouter()
 
@@ -32,6 +33,7 @@ schema_view = get_schema_view(
       contact=openapi.Contact(email="danielrotheia@gmail.com"),
       license=None,
    ),
+   permission_classes=(AllowAny,),
    public=True,
 )
 
@@ -40,6 +42,6 @@ urlpatterns = [
     path(r'api/', include((router.urls, 'api'), namespace='api')),
     path(r'api/stocks/', include(('apps.stocks.urls', 'apps.stocks'), namespace='stocks')),
     path(r'api/operations/', include(('apps.operations.urls', 'apps.operations'), namespace='operations')),
-    path(r'api/authentication/', include(('apps.authentication.urls', 'apps.authentication'), namespace='authentication')),
+    path(r'api/accounts/', include(('apps.authentication.urls', 'apps.authentication'), namespace='authentication')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-docs'),
 ]

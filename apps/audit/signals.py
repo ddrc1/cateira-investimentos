@@ -27,7 +27,7 @@ def check_update(sender, instance, **kwargs):
             changes = {attr: obj.__dict__[attr] for attr in fields_diff}
 
             if len(changes) > 0:
-                records = Audit(table=instance._meta.db_table, object_id=instance.pk, old_values=changes, user=get_usuario())
+                records = Audit(table=instance._meta.db_table, object_id=instance.pk, old_values=changes, user_id=get_usuario())
                 records.save()
 
 @receiver(post_save, sender=User)
@@ -53,6 +53,7 @@ def get_usuario():
                 request = frame.f_locals['request']
                 if request.user.id is not None:
                     return request.user.id
+                
             frame = frame.f_back
     except:
         return None

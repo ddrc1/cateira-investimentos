@@ -21,6 +21,13 @@ class Stock(models.Model):
 
     def __str__(self):
         return self.code
+    
+    def current_price(self):
+        stock_price = StockPrice.objects.filter(stock=self).order_by('-date').first()
+        if stock_price:
+            return stock_price.mean_price
+
+        return 0
 
 
 class StockPrice(models.Model):
@@ -31,6 +38,10 @@ class StockPrice(models.Model):
 
     class Meta():
         unique_together = ("stock", "date")
+
+    @property
+    def mean_price(self) -> float:
+        return (self.max_price + self.min_price) / 2
 
 
 class Dividends(models.Model):

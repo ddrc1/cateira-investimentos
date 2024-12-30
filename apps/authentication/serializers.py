@@ -8,7 +8,6 @@ from .password_validation import validators
 
 from .models import User
 
-
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -23,6 +22,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         User.objects.create_user(**validated_data)
+
         return validated_data
     
 
