@@ -43,5 +43,6 @@ urlpatterns = [
     path(r'api/stocks/', include(('apps.stocks.urls', 'apps.stocks'), namespace='stocks')),
     path(r'api/operations/', include(('apps.operations.urls', 'apps.operations'), namespace='operations')),
     path(r'api/accounts/', include(('apps.authentication.urls', 'apps.authentication'), namespace='authentication')),
+    path(r'api/users/', include(('apps.users.urls', 'apps.users'), namespace='users')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-docs'),
 ]
