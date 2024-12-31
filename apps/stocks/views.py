@@ -3,11 +3,11 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework.permissions import IsAdminUser
 from .permissions import ReadOnlyPermission
 
-from .serializers import StockSerializer, StockTypeSerializer, StockPriceSerializer, DividendsSerializer
+from .serializers import StockSerializer, StockTypeSerializer, StockPriceSerializer, DividendSerializer
 from .swagger.swagger_serializers import SwaggerStockSerializer, SwaggerStockTypeSerializer, SwaggerStockPriceSerializer, \
-    SwaggerDividendsSerializer
+    SwaggerDividendSerializer
 
-from .models import StockType, Stock, StockPrice, Dividends
+from .models import StockType, Stock, StockPrice, Dividend
 
 
 class StocksBaseViewSet(viewsets.ModelViewSet):
@@ -16,7 +16,6 @@ class StocksBaseViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        print(user)
         return self.queryset
     
     def perform_destroy(self, instance):
@@ -35,6 +34,14 @@ class StockTypeViewSet(StocksBaseViewSet):
     @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerStockTypeSerializer(many=True)})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SwaggerStockTypeSerializer()})
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerStockTypeSerializer(many=True)})
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
 
 
 class StockViewSet(StocksBaseViewSet):
@@ -48,6 +55,14 @@ class StockViewSet(StocksBaseViewSet):
     @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerStockSerializer(many=True)})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SwaggerStockSerializer()})
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerStockSerializer()})
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
     
 
 class StockPriceViewSet(StocksBaseViewSet):
@@ -63,16 +78,32 @@ class StockPriceViewSet(StocksBaseViewSet):
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
     
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SwaggerStockPriceSerializer()})
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerStockPriceSerializer()})
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+    
 
-class DividendsViewSet(StocksBaseViewSet):
-    queryset = Dividends.objects.all()
+class DividendViewSet(StocksBaseViewSet):
+    queryset = Dividend.objects.all()
     http_method_names = ['post', 'get', 'put']
-    serializer_class = DividendsSerializer
+    serializer_class = DividendSerializer
 
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerDividendsSerializer()})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerDividendSerializer()})
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerDividendsSerializer(many=True)})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerDividendSerializer(many=True)})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SwaggerDividendSerializer()})
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerDividendSerializer()})
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)

@@ -1,9 +1,10 @@
+from typing import Any, Dict, List
 from django.db import models
-from django.db.models import Value
+from django.db.models import Value, F
 from django.utils.timezone import now
 from operator import itemgetter
 
-from ..stocks.models import Stock
+from ..stocks.models import Dividend, Stock
 from ..authentication.models import User
 
 class Buy(models.Model):
@@ -17,7 +18,7 @@ class Buy(models.Model):
     active = models.BooleanField(null=False, default=True)
 
     @property
-    def cost(self) -> float:
+    def total(self) -> float:
         return self.volume * self.price
 
 
@@ -32,12 +33,13 @@ class Sell(models.Model):
     active = models.BooleanField(null=False, default=True)
 
     @property
-    def cost(self) -> float:
+    def total(self) -> float:
         return self.volume * self.price
+    
 
 class Custody(models.Model):
-    volume = models.PositiveIntegerField(null=False, default=0, help_text="Amount in custody")
-    total_cost = models.FloatField(null=False, default=0, help_text="Amount spent for this stock")
+    volume = models.PositiveIntegerField(null=False, default=0)
+    total_cost = models.FloatField(null=False, default=0)
     stock = models.ForeignKey(Stock, null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True, null=False)
@@ -47,12 +49,15 @@ class Custody(models.Model):
     class Meta():
         unique_together = ('stock', 'user')
 
+    def __str__(self):
+        return f"{self.stock} - {self.user}"
+
     def rebuild(self):
         params = {'user': self.user, 'stock': self.stock, 'active': True}
         buy_operations = Buy.objects.filter(**params).values('volume', 'price', 'date').annotate(type=Value('buy'))
         sell_operations = Sell.objects.filter(**params).values('volume', 'price', 'date').annotate(type=Value('sell'))
         
-        operations = sorted(list(buy_operations) + list(sell_operations), key=itemgetter('date'))
+        operations: List[Dict[str, Any]] = sorted(list(buy_operations) + list(sell_operations), key=itemgetter('date'))
         total_cost = 0
         volume = 0
         for operation in operations:
@@ -81,6 +86,12 @@ class Custody(models.Model):
             return  self.total_cost / self.volume
         
         return 0
+    
+    @property
+    def dividend_amount_received(self) -> float:
+        return sum(self.earned_dividends.all().annotate(
+                    sum=F("dividend__value") * F("volume")).values_list('sum', flat=True)
+               )
 
     @property
     def total_value(self) -> float:
@@ -90,3 +101,12 @@ class Custody(models.Model):
     def balance(self) -> float:
         return self.total_cost - self.total_value
     
+
+class CustodyDividend(models.Model):
+    custody = models.ForeignKey(Custody, null=False, on_delete=models.CASCADE, related_name='earned_dividends')
+    dividend = models.ForeignKey(Dividend, null=False, on_delete=models.CASCADE)
+    volume = models.PositiveIntegerField(null=False, blank=False, default=0)
+
+    @property
+    def amount_received(self):
+        return self.dividend.value * self.volume

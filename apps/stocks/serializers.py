@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Dividends, Stock, StockType, StockPrice
+from .models import Dividend, Stock, StockType, StockPrice
 
 
 class StockSerializer(serializers.ModelSerializer):
@@ -13,7 +13,8 @@ class StockSerializer(serializers.ModelSerializer):
             "id": instance.id,
             "code": instance.code,
             "description": instance.description,
-            "stock_type": instance.stock_type.type
+            "stock_type": instance.stock_type.type,
+            "has_dividends": instance.has_dividends
         }
 
         return representation
@@ -43,6 +44,7 @@ class StockPriceSerializer(serializers.ModelSerializer):
             "id": instance.id,
             "stock": instance.stock.code,
             "min_price": instance.min_price,
+            "mean_price": instance.mean_price,
             "max_price": instance.max_price,
             "date": instance.date,
         }
@@ -50,9 +52,9 @@ class StockPriceSerializer(serializers.ModelSerializer):
         return representation
     
 
-class DividendsSerializer(serializers.ModelSerializer):
+class DividendSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Dividends
+        model = Dividend
         fields = '__all__'
 
     def to_representation(self, instance):

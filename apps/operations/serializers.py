@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from django.db import transaction
+from drf_yasg.utils import swagger_serializer_method
 
-from .models import Buy, Sell, Custody
-from ..stocks.models import Stock
+
+from .models import Buy, Sell, Custody, CustodyDividend
+from ..stocks.models import Dividend, Stock
 from ..authentication.models import User
 
 
@@ -109,8 +111,24 @@ class CustodySerializer(serializers.ModelSerializer):
     balance = serializers.FloatField()
     stock = serializers.SlugRelatedField(queryset=Stock.objects.filter(active=True), slug_field='code')
     user = serializers.SlugRelatedField(queryset=User.objects.filter(active=True), slug_field='username')
+    dividend_amount_received = serializers.FloatField()
 
     class Meta:
         model = Custody
-        fields = ['volume', 'total_cost', 'current_price', 'mean_price', 'total_value', 'balance',
-                  'stock', 'user']
+        exclude = ['created_at', 'updated_at', 'active']
+        
+
+class CustodyDividendSerializer(serializers.ModelSerializer):
+    stock = serializers.SlugRelatedField(queryset=Dividend.objects.all(), slug_field='code', source='dividend.stock')
+    user = serializers.SlugRelatedField(queryset=Custody.objects.all(), slug_field='username', source='custody.user')
+    amount_received = serializers.FloatField()
+    date = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = CustodyDividend
+        exclude = ["custody", "dividend"]
+
+    @swagger_serializer_method(serializers.DateField())
+    def get_date(self, obj):
+        return  obj.dividend.date
+    

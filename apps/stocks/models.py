@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime, timedelta
 
 class StockType(models.Model):
     type = models.CharField(max_length=50, blank=False, null=False, unique=True)
@@ -28,6 +29,11 @@ class Stock(models.Model):
             return stock_price.mean_price
 
         return 0
+    
+    @property
+    def has_dividends(self) -> bool:
+        threshold_date = datetime.today().date() - timedelta(days=90)
+        return self.dividends.filter(date__gte=threshold_date).exists()
 
 
 class StockPrice(models.Model):
@@ -44,10 +50,13 @@ class StockPrice(models.Model):
         return (self.max_price + self.min_price) / 2
 
 
-class Dividends(models.Model):
-    stock = models.ForeignKey(Stock, null=False, on_delete=models.CASCADE)
+class Dividend(models.Model):
+    stock = models.ForeignKey(Stock, null=False, on_delete=models.CASCADE, related_name='dividends')
     value = models.FloatField(null=False)
     date = models.DateField(null=False, auto_now=True)
 
     class Meta():
         unique_together = ("stock", "date")
+
+    def __str__(self):
+        return f"{self.stock} - {self.date}"

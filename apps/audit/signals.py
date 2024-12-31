@@ -4,7 +4,7 @@ import inspect
 
 from .models import Audit
 from ..operations.models import Buy, Sell
-from ..stocks.models import Stock, StockPrice, StockType, Dividends 
+from ..stocks.models import Stock, StockPrice, StockType, Dividend
 from ..authentication.models import User
 
 
@@ -14,7 +14,7 @@ from ..authentication.models import User
 @receiver(pre_save, sender=Stock)
 @receiver(pre_save, sender=StockType)
 @receiver(pre_save, sender=StockPrice)
-@receiver(pre_save, sender=Dividends)
+@receiver(pre_save, sender=Dividend)
 def check_update(sender, instance, **kwargs):
     if instance.pk is not None and not kwargs['raw']:
         try:
@@ -36,7 +36,7 @@ def check_update(sender, instance, **kwargs):
 @receiver(post_save, sender=Stock)
 @receiver(post_save, sender=StockType)
 @receiver(post_save, sender=StockPrice)
-@receiver(post_save, sender=Dividends)
+@receiver(post_save, sender=Dividend)
 def save_created(sender, instance, created, **kwargs):
     if created:
         try:

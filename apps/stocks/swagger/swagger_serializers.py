@@ -1,12 +1,15 @@
 from rest_framework import serializers
 
-from ..models import Dividends, Stock, StockPrice, StockType
+from ..models import Dividend, Stock, StockPrice, StockType
 
 
 class SwaggerStockSerializer(serializers.ModelSerializer):
+    stock_type = serializers.CharField()
+    has_dividends = serializers.BooleanField()
+
     class Meta:
         model = Stock
-        fields = ['id', 'code', 'description', 'stock_type']
+        fields = ['id', 'code', 'description', 'stock_type', 'has_dividends']
 
 
 class SwaggerStockTypeSerializer(serializers.ModelSerializer):
@@ -16,12 +19,16 @@ class SwaggerStockTypeSerializer(serializers.ModelSerializer):
 
 
 class SwaggerStockPriceSerializer(serializers.ModelSerializer):
+    stock = serializers.CharField()
+
     class Meta:
         model = StockPrice
         fields = ['id', 'stock', 'min_price', 'max_price', 'date']
 
 
-class SwaggerDividendsSerializer(serializers.ModelSerializer):
+class SwaggerDividendSerializer(serializers.ModelSerializer):
+    stock = serializers.CharField()
+    
     class Meta:
-        model = Dividends
+        model = Dividend
         fields = ['id', 'stock', 'value', 'date']

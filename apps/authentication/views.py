@@ -16,7 +16,7 @@ class RegisterView(views.APIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
-    @swagger_auto_schema(responses=None)
+    @swagger_auto_schema(request_body=RegisterSerializer(), responses={status.HTTP_201_CREATED: None})
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
