@@ -1,0 +1,92 @@
+[
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 1,
+        "fields": {
+            "name": "Stock",
+            "description": "Ownership in a company, providing potential dividends and price appreciation.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 2,
+        "fields": {
+            "name": "Bond",
+            "description": "Debt securities that pay interest and return the principal at maturity.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 3,
+        "fields": {
+            "name": "Equity Fund",
+            "description": "Investment funds that primarily invest in stocks, aiming for capital appreciation.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 4,
+        "fields": {
+            "name": "Real Estate Investment Trust (REIT)",
+            "description": "Funds that invest in real estate, generating income through rents and property sales.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 5,
+        "fields": {
+            "name": "Fixed Income Fund",
+            "description": "Funds that invest in debt securities, providing steady income with lower risk.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 6,
+        "fields": {
+            "name": "Multimarket Fund",
+            "description": "Funds that invest in a variety of asset classes, including stocks, bonds, and derivatives.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 7,
+        "fields": {
+            "name": "Currency (Forex)",
+            "description": "Market for trading national currencies, profiting from exchange rate changes.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 8,
+        "fields": {
+            "name": "Cryptocurrency",
+            "description": "Digital currencies using cryptography, traded on decentralized networks.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "apps_stocks.StockType",
+        "pk": 9,
+        "fields": {
+            "name": "Certificate of Deposit (CDs)",
+            "description": "Time deposits with banks, offering interest and returning principal at maturity.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z"
+        }
+    }
+]

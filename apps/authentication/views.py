@@ -50,10 +50,10 @@ class LogoutView(views.APIView):
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
             
-            token = RefreshToken(serializer.validated_data)
+            token = RefreshToken(serializer.validated_data['refresh'])
             token.blacklist()
-
             logout(request)
+            
             return Response(status=status.HTTP_204_NO_CONTENT)
         
         except TokenError:

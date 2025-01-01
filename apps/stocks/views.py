@@ -4,10 +4,11 @@ from rest_framework.permissions import IsAdminUser
 from .permissions import ReadOnlyPermission
 from ..utils.pagination import CustomPageNumberPagination
 
-from .serializers import StockSerializer, StockTypeSerializer, StockPriceSerializer, DividendSerializer
+from .serializers import StockSerializer, StockTypeSerializer, StockSubTypeSerializer, StockPriceSerializer, DividendSerializer
 from .swagger.swagger_serializers import StockResponseSerializer, StockTypeResponseSerializer, StockPriceResponseSerializer, \
     DividendResponseSerializer, PaginatedStockResponseSerializer, PaginatedStockTypeResponseSerializer, \
-    PaginatedStockPriceResponseSerializer, PaginatedDividendResponseSerializer
+    PaginatedStockPriceResponseSerializer, PaginatedDividendResponseSerializer, StockSubTypeResponseSerializer, \
+    PaginatedStockSubTypeResponseSerializer
 
 from .models import StockType, Stock, StockPrice, Dividend
 
@@ -42,7 +43,28 @@ class StockTypeViewSet(StocksBaseViewSet):
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: StockTypeResponseSerializer(many=True)})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: StockTypeResponseSerializer})
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+    
+
+class StockSubTypeViewSet(StocksBaseViewSet):
+    queryset = StockType.objects.filter(active=True)
+    serializer_class = StockSubTypeSerializer
+
+    @swagger_auto_schema(responses={status.HTTP_200_OK: StockSubTypeResponseSerializer()})
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedStockSubTypeResponseSerializer()})
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: StockSubTypeResponseSerializer()})
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: StockSubTypeResponseSerializer})
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
 

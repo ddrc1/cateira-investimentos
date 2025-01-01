@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from ..models import Dividend, Stock, StockPrice, StockType
+from ..models import Dividend, Stock, StockPrice, StockSubType, StockType
 
 
 class PaginatedResponseSerializer(serializers.Serializer):
@@ -24,7 +24,15 @@ class StockResponseSerializer(serializers.ModelSerializer):
 class StockTypeResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = StockType
-        fields = ['id', 'type', 'description']
+        fields = ['id', 'name', 'description']
+
+
+class StockSubTypeResponseSerializer(serializers.ModelSerializer):
+    stock_type = serializers.CharField()
+
+    class Meta:
+        model = StockSubType
+        fields = ['id', 'name', 'stock_type', 'description']
 
 
 class StockPriceResponseSerializer(serializers.ModelSerializer):
@@ -57,3 +65,7 @@ class PaginatedStockPriceResponseSerializer(PaginatedResponseSerializer):
 
 class PaginatedDividendResponseSerializer(PaginatedResponseSerializer):
     results = DividendResponseSerializer(many=True)
+
+
+class PaginatedStockSubTypeResponseSerializer(PaginatedResponseSerializer):
+    results = StockSubTypeResponseSerializer(many=True)

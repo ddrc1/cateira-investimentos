@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Stock, StockPrice, StockType, Dividend
+from .models import Stock, StockPrice, StockType, StockSubType, Dividend
 
 class AdminStock(admin.ModelAdmin):
-    list_display = ('id', 'code', 'description', 'stock_type', 'has_dividends', 'created_at', 'updated_at', 'active')
-    list_filter = ('stock_type', 'updated_at', 'created_at', 'active')
-    list_editable = ('code', 'description', 'stock_type', 'active')
+    list_display = ('id', 'code', 'description', 'stock_sub_type', 'stock_sub_type__stock_type', 'has_dividends', 'created_at', 'updated_at', 'active')
+    list_filter = ('stock_sub_type', 'updated_at', 'created_at', 'active')
+    list_editable = ('code', 'description', 'stock_sub_type', 'active')
 
 
 class AdminStockPrice(admin.ModelAdmin):
@@ -14,9 +14,15 @@ class AdminStockPrice(admin.ModelAdmin):
 
 
 class AdminStockTypePrice(admin.ModelAdmin):
-    list_display = ('id', 'type', 'description', 'created_at', 'updated_at', 'active')
+    list_display = ('id', 'name', 'description', 'created_at', 'updated_at', 'active')
     list_filter = ('created_at', 'updated_at', 'active')
-    list_editable = ('type', 'description', 'active')
+    list_editable = ('name', 'description', 'active')
+
+
+class AdminStockSubTypePrice(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description', 'stock_type', 'created_at', 'updated_at', 'active')
+    list_filter = ('created_at', 'updated_at', 'active')
+    list_editable = ('name', 'description', 'active')
 
 
 class AdminDividend(admin.ModelAdmin):
@@ -28,4 +34,5 @@ class AdminDividend(admin.ModelAdmin):
 admin.site.register(Stock, AdminStock)
 admin.site.register(StockPrice, AdminStockPrice)
 admin.site.register(StockType, AdminStockTypePrice)
+admin.site.register(StockSubType, AdminStockSubTypePrice)
 admin.site.register(Dividend, AdminDividend)

@@ -1,0 +1,506 @@
+[
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 1,
+        "fields": {
+            "name": "Energy Stock",
+            "description": "Stocks of companies in the energy sector, such as oil, gas, and renewable energy.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 2,
+        "fields": {
+            "name": "Technology Stock",
+            "description": "Stocks of companies in the technology sector, including software, hardware, and IT services.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 3,
+        "fields": {
+            "name": "Healthcare Stock",
+            "description": "Stocks of companies in the healthcare sector, including pharmaceuticals, hospitals, and medical devices.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 4,
+        "fields": {
+            "name": "Consumer Goods Stock",
+            "description": "Stocks of companies that manufacture or sell consumer products.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 5,
+        "fields": {
+            "name": "Financial Stock",
+            "description": "Stocks of companies in the financial sector, including banks, insurers, and investment firms.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 6,
+        "fields": {
+            "name": "Telecommunications Stock",
+            "description": "Stocks of companies in the telecommunications sector, including phone services and internet providers.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 7,
+        "fields": {
+            "name": "Industrial Stock",
+            "description": "Stocks of companies in the industrial sector, including manufacturing, infrastructure, and transportation.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 8,
+        "fields": {
+            "name": "Utilities Stock",
+            "description": "Stocks of companies that provide utility services such as water, gas, and electricity.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 9,
+        "fields": {
+            "name": "Real Estate Stock",
+            "description": "Stocks of companies involved in real estate development and management.",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 10,
+        "fields": {
+            "name": "Sector Equity Fund",
+            "description": "Equity funds focused on specific sectors such as Technology, Energy, or Real Estate.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 11,
+        "fields": {
+            "name": "Growth Equity Fund",
+            "description": "Funds that invest in companies with high growth potential.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 12,
+        "fields": {
+            "name": "Value Equity Fund",
+            "description": "Funds that seek undervalued stocks with potential for future appreciation.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 13,
+        "fields": {
+            "name": "International Equity Fund",
+            "description": "Equity funds that invest in companies outside the investor's home country.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 14,
+        "fields": {
+            "name": "Small Cap Equity Fund",
+            "description": "Funds investing in small-cap stocks, which typically have high growth potential.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 15,
+        "fields": {
+            "name": "Large Cap Equity Fund",
+            "description": "Funds investing in large-cap stocks, typically offering stability and consistent returns.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 16,
+        "fields": {
+            "name": "Dividend Equity Fund",
+            "description": "Funds focused on investing in stocks that regularly pay dividends.",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 17,
+        "fields": {
+            "name": "Retail REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in shopping malls, retail stores, and commercial properties.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 18,
+        "fields": {
+            "name": "Office REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in office buildings and corporate properties.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 19,
+        "fields": {
+            "name": "Industrial REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in industrial properties such as factories and warehouses.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 20,
+        "fields": {
+            "name": "Residential REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in residential properties.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 21,
+        "fields": {
+            "name": "Hospitality REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in hotels and resorts.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 22,
+        "fields": {
+            "name": "Healthcare REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in healthcare properties such as hospitals and medical centers.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 23,
+        "fields": {
+            "name": "Mortgage REIT",
+            "description": "Real Estate Investment Trusts (REITs) investing in mortgages and mortgage-backed securities.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 24,
+        "fields": {
+            "name": "Hybrid REIT",
+            "description": "Real Estate Investment Trusts (REITs) that mix physical properties and mortgage-backed securities.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 25,
+        "fields": {
+            "name": "Government Bond Fund",
+            "description": "Funds investing in government debt securities with low risk and stable returns.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 26,
+        "fields": {
+            "name": "Corporate Bond Funds",
+            "description": "Funds investing in corporate debt securities, generally offering higher returns with higher risk.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 27,
+        "fields": {
+            "name": "Municipal Bond Funds",
+            "description": "Funds investing in municipal debt securities, often with tax benefits.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 28,
+        "fields": {
+            "name": "High-Yield Bond Funds",
+            "description": "Funds investing in high-risk, high-return corporate debt securities (Junk Bonds).",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 29,
+        "fields": {
+            "name": "Short-Term Bond Funds",
+            "description": "Funds investing in short-term debt securities with lower volatility.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 30,
+        "fields": {
+            "name": "Long-Term Bond Funds",
+            "description": "Funds investing in long-term debt securities, typically offering higher yields with more risk.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 31,
+        "fields": {
+            "name": "Inflation-Protected Bond Funds",
+            "description": "Funds investing in securities that protect against inflation, such as TIPS.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 32,
+        "fields": {
+            "name": "International Bond Funds",
+            "description": "Funds investing in debt securities issued by foreign governments or corporations.",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 33,
+        "fields": {
+            "name": "Other",
+            "description": "Other type of stock",
+            "stock_type": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 34,
+        "fields": {
+            "name": "Other",
+            "description": "Other type of equity funds",
+            "stock_type": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 35,
+        "fields": {
+            "name": "Other",
+            "description": "Other type of REIT",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 36,
+        "fields": {
+            "name": "Other",
+            "description": "Other type of bond fund",
+            "stock_type": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 37,
+        "fields": {
+            "name": "",
+            "description": "Unavailable",
+            "stock_type": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 38,
+        "fields": {
+            "name": "",
+            "description": "Unavailable",
+            "stock_type": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 39,
+        "fields": {
+            "name": "",
+            "description": "Unavailable",
+            "stock_type": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 40,
+        "fields": {
+            "name": "",
+            "description": "Unavailable",
+            "stock_type": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 41,
+        "fields": {
+            "name": "",
+            "description": "Unavailable",
+            "stock_type": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_stocks.StockSubType",
+        "pk": 42,
+        "fields": {
+            "name": "Fund of Funds (FoF)",
+            "description": "Funds that invest in a diversified portfolio of REITs.",
+            "stock_type": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    }
+]
