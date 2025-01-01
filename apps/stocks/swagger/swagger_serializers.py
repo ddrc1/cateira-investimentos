@@ -3,7 +3,16 @@ from rest_framework import serializers
 from ..models import Dividend, Stock, StockPrice, StockType
 
 
-class SwaggerStockSerializer(serializers.ModelSerializer):
+class PaginatedResponseSerializer(serializers.Serializer):
+    count = serializers.IntegerField()
+    total_pages = serializers.IntegerField()
+    current_page = serializers.IntegerField()
+    per_page = serializers.IntegerField()
+    next = serializers.URLField()
+    previous = serializers.URLField()
+
+
+class StockResponseSerializer(serializers.ModelSerializer):
     stock_type = serializers.CharField()
     has_dividends = serializers.BooleanField()
 
@@ -12,13 +21,13 @@ class SwaggerStockSerializer(serializers.ModelSerializer):
         fields = ['id', 'code', 'description', 'stock_type', 'has_dividends']
 
 
-class SwaggerStockTypeSerializer(serializers.ModelSerializer):
+class StockTypeResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = StockType
         fields = ['id', 'type', 'description']
 
 
-class SwaggerStockPriceSerializer(serializers.ModelSerializer):
+class StockPriceResponseSerializer(serializers.ModelSerializer):
     stock = serializers.CharField()
 
     class Meta:
@@ -26,9 +35,25 @@ class SwaggerStockPriceSerializer(serializers.ModelSerializer):
         fields = ['id', 'stock', 'min_price', 'max_price', 'date']
 
 
-class SwaggerDividendSerializer(serializers.ModelSerializer):
+class DividendResponseSerializer(serializers.ModelSerializer):
     stock = serializers.CharField()
     
     class Meta:
         model = Dividend
         fields = ['id', 'stock', 'value', 'date']
+
+
+class PaginatedStockResponseSerializer(PaginatedResponseSerializer):
+    results = StockResponseSerializer(many=True)
+
+
+class PaginatedStockTypeResponseSerializer(PaginatedResponseSerializer):
+    results = StockTypeResponseSerializer(many=True)
+
+
+class PaginatedStockPriceResponseSerializer(PaginatedResponseSerializer):
+    results = StockPriceResponseSerializer(many=True)
+
+
+class PaginatedDividendResponseSerializer(PaginatedResponseSerializer):
+    results = DividendResponseSerializer(many=True)

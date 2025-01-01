@@ -1,3 +1,10 @@
 from django.contrib import admin
+from ..authentication.models import User
 
-# Register your models here.
+class AdminUser(admin.ModelAdmin):
+    list_display = ('id', 'email', 'username', 'address', 'staff', 'active', 'date_joined', 'last_login')
+    list_filter = ('staff', 'active', 'date_joined', 'last_login')
+    list_editable = ('email', 'username', 'address', 'staff', 'active')
+
+
+admin.site.register(User, AdminUser)

@@ -4,20 +4,26 @@ from rest_framework.decorators import action
 from django.db.models import QuerySet
 from drf_yasg.utils import swagger_auto_schema
 
+from ..utils.pagination import CustomPageNumberPagination
+
 from .serializers import BuySerializer, SellSerializer, CustodySerializer, CustodyDividendSerializer
-from .swagger.swagger_serializers import SwaggerBuySerializer, SwaggerSellSerializer
+from .swagger.swagger_serializers import BuyResponseSerializer, PaginatedBuyResponseSerializer, \
+    SellResponseSerializer, PaginatedSellResponseSerializer, PaginatedCustodyResponseSerializer, \
+    PaginatedCustodyDividendResponseSerializer
 
 from .models import Buy, Sell, Custody, CustodyDividend
+from ..authentication.models import User
 
 class OperationsBaseViewSet(viewsets.ModelViewSet):
     http_method_names = ['post', 'get', 'delete', 'put']
+    pagination_class = CustomPageNumberPagination
 
     def get_queryset(self) -> QuerySet[Any]:
-        user = self.request.user
-        if user.is_superuser:
+        user: User = self.request.user
+        if user.is_staff:
             return self.queryset
         
-        queryset = self.queryset.filter(user=user)
+        queryset: QuerySet[Any] = self.queryset.filter(user=user)
         return queryset
     
     def perform_destroy(self, instance):
@@ -29,19 +35,19 @@ class BuyViewSet(OperationsBaseViewSet):
     queryset = Buy.objects.filter(active=True)
     serializer_class = BuySerializer
         
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerBuySerializer()})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: BuyResponseSerializer()})
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerBuySerializer(many=True)})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedBuyResponseSerializer()})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SwaggerBuySerializer()})
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: BuyResponseSerializer()})
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerBuySerializer()})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: BuyResponseSerializer()})
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
     
@@ -50,19 +56,19 @@ class SellViewSet(OperationsBaseViewSet):
     queryset = Sell.objects.filter(active=True)
     serializer_class = SellSerializer
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerSellSerializer()})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SellResponseSerializer()})
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerSellSerializer(many=True)})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedSellResponseSerializer()})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SwaggerSellSerializer()})
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: SellResponseSerializer()})
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
     
-    @swagger_auto_schema(responses={status.HTTP_200_OK: SwaggerSellSerializer()})
+    @swagger_auto_schema(responses={status.HTTP_200_OK: SellResponseSerializer()})
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
 
@@ -71,6 +77,7 @@ class CustodyViewSet(viewsets.ModelViewSet):
     queryset = Custody.objects.all()
     serializer_class = CustodySerializer
     http_method_names = ['get']
+    pagination_class = CustomPageNumberPagination
 
     serializers = {
         "default": serializer_class,
@@ -91,6 +98,11 @@ class CustodyViewSet(viewsets.ModelViewSet):
 
         return queryset
     
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedCustodyResponseSerializer()})
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedCustodyDividendResponseSerializer()})
     @action(detail=False, methods=['get'], url_path="dividends")
     def list_dividends(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
