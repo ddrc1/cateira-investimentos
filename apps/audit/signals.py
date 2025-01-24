@@ -4,16 +4,18 @@ import inspect
 
 from .models import Audit
 from ..operations.models import Buy, Sell
-from ..stocks.models import Stock, StockPrice, StockType, Dividend
+from ..assets.models import Asset, AssetPrice, AssetType, Dividend, Sector, SubSector
 from ..authentication.models import User
 
 
 @receiver(pre_save, sender=User)
 @receiver(pre_save, sender=Buy)
 @receiver(pre_save, sender=Sell)
-@receiver(pre_save, sender=Stock)
-@receiver(pre_save, sender=StockType)
-@receiver(pre_save, sender=StockPrice)
+@receiver(pre_save, sender=Asset)
+@receiver(pre_save, sender=Sector)
+@receiver(pre_save, sender=SubSector)
+@receiver(pre_save, sender=AssetType)
+@receiver(pre_save, sender=AssetPrice)
 @receiver(pre_save, sender=Dividend)
 def check_update(sender, instance, **kwargs):
     if instance.pk is not None and not kwargs['raw']:
@@ -33,9 +35,11 @@ def check_update(sender, instance, **kwargs):
 @receiver(post_save, sender=User)
 @receiver(post_save, sender=Buy)
 @receiver(post_save, sender=Sell)
-@receiver(post_save, sender=Stock)
-@receiver(post_save, sender=StockType)
-@receiver(post_save, sender=StockPrice)
+@receiver(post_save, sender=Asset)
+@receiver(post_save, sender=Sector)
+@receiver(post_save, sender=SubSector)
+@receiver(post_save, sender=AssetType)
+@receiver(post_save, sender=AssetPrice)
 @receiver(post_save, sender=Dividend)
 def save_created(sender, instance, created, **kwargs):
     if created:

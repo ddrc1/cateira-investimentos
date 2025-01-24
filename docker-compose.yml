@@ -1,0 +1,36 @@
+services:
+    carteira-app:
+        container_name: carteira-app
+        build:
+            dockerfile: ./docker/Dockerfile.server
+        restart: unless-stopped
+        # volumes:
+        #     - "../:/app"
+        ports:
+            - 8000:8000
+        env_file:
+            - .env
+        networks:
+            - carteira-network
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://127.0.0.1:8000"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+
+
+    nginx:
+        image: nginx:latest
+        container_name: nginx
+        volumes:
+            - ./docker/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - 8000:80
+        networks:
+            - carteira-network
+        depends_on:
+            - carteira-app
+
+networks:
+    carteira-network:
+        driver: bridge

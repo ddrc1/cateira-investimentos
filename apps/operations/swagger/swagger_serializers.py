@@ -13,23 +13,34 @@ class PaginatedResponseSerializer(serializers.Serializer):
 
 
 class BuyResponseSerializer(serializers.ModelSerializer):
-    stock = serializers.CharField()
+    asset = serializers.CharField()
     user = serializers.CharField()
     total = serializers.FloatField()
 
     class Meta:
         model = Buy
-        fields = ['id', 'volume', 'stock', 'price', 'total', 'date', 'user']
+        fields = ['id', 'volume', 'asset', 'price', 'total', 'date', 'user']
 
 
 class SellResponseSerializer(serializers.ModelSerializer):
-    stock = serializers.CharField()
+    asset = serializers.CharField()
     user = serializers.CharField()
     total = serializers.FloatField()
 
     class Meta:
         model = Sell
-        fields = ['id', 'volume', 'stock', 'price', 'total', 'date', 'user']
+        fields = ['id', 'volume', 'asset', 'price', 'total', 'date', 'user']
+
+
+class CustodyDividendResponseSerializer(serializers.ModelSerializer):
+    asset = serializers.CharField()
+    value = serializers.FloatField()
+    amount_received = serializers.FloatField()
+    date = serializers.DateField()
+
+    class Meta:
+        model = Sell
+        fields = ['id', 'volume', 'asset', 'value', 'amount_received', 'date']
 
 
 class PaginatedBuyResponseSerializer(PaginatedResponseSerializer):
@@ -45,4 +56,4 @@ class PaginatedCustodyResponseSerializer(PaginatedResponseSerializer):
 
 
 class PaginatedCustodyDividendResponseSerializer(PaginatedResponseSerializer):
-    results = CustodyDividendSerializer(many=True)
+    results = CustodyDividendResponseSerializer(many=True)

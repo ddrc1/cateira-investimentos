@@ -4,11 +4,14 @@ from drf_yasg.utils import swagger_serializer_method
 
 
 from .models import Buy, Sell, Custody, CustodyDividend
-from ..stocks.models import Dividend, Stock
+from ..assets.models import Dividend, Asset
 from ..authentication.models import User
 
 
 class BuySerializer(serializers.ModelSerializer):
+    value = serializers.FloatField(min_value=0)
+    volume = serializers.FloatField(min_value=0)
+
     class Meta:
         model = Buy
         fields = '__all__'
@@ -16,12 +19,7 @@ class BuySerializer(serializers.ModelSerializer):
     @transaction.atomic
     def create(self, validated_data):
         buy = Buy.objects.create(**validated_data)
-        try:
-            custody = Custody.objects.get(stock=validated_data['stock'], user=validated_data['user'])
-        except Custody.DoesNotExist:
-            custody = Custody.objects.create(stock=validated_data['stock'], user=validated_data['user'])
-            custody.save()
-        
+        custody, _ = Custody.objects.get_or_create(asset=validated_data['asset'], user=validated_data['user'])
         custody.rebuild()
 
         return buy
@@ -34,7 +32,7 @@ class BuySerializer(serializers.ModelSerializer):
         instance.save()
 
         try:
-            custody = Custody.objects.get(stock=validated_data['stock'], user=validated_data['user'])
+            custody = Custody.objects.get(asset=validated_data['asset'], user=validated_data['user'])
             try:
                 custody.rebuild()
             except ValueError as e:
@@ -48,7 +46,7 @@ class BuySerializer(serializers.ModelSerializer):
         representation = {
             'id': instance.id,
             'volume': instance.volume,
-            'stock': instance.stock.code,
+            'asset': instance.asset.code,
             'price': instance.price,
             'date': instance.date,
             'user': instance.user.username
@@ -58,6 +56,9 @@ class BuySerializer(serializers.ModelSerializer):
 
 
 class SellSerializer(serializers.ModelSerializer):
+    value = serializers.FloatField(min_value=0)
+    volume = serializers.FloatField(min_value=0)
+
     class Meta:
         model = Sell
         fields = '__all__'
@@ -66,7 +67,7 @@ class SellSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         sell = Sell.objects.create(**validated_data)
         try:
-            custody = Custody.objects.get(stock=validated_data['stock'], user=validated_data['user'])
+            custody = Custody.objects.get(asset=validated_data['asset'], user=validated_data['user'])
             custody.rebuild()
         except Custody.DoesNotExist:
             raise serializers.ValidationError("Couldn't find the wallet")
@@ -81,7 +82,7 @@ class SellSerializer(serializers.ModelSerializer):
         instance.save()
 
         try:
-            custody = Custody.objects.get(stock=validated_data['stock'], user=validated_data['user'])
+            custody = Custody.objects.get(asset=validated_data['asset'], user=validated_data['user'])
             try:
                 custody.rebuild()
             except ValueError as e:
@@ -95,7 +96,7 @@ class SellSerializer(serializers.ModelSerializer):
         representation = {
             'id': instance.id,
             'volume': instance.volume,
-            'stock': instance.stock.code,
+            'asset': instance.asset.code,
             'price': instance.price,
             'date': instance.date,
             'user': instance.user.username
@@ -105,11 +106,11 @@ class SellSerializer(serializers.ModelSerializer):
 
 
 class CustodySerializer(serializers.ModelSerializer):
-    current_price = serializers.FloatField()
+    last_price = serializers.FloatField()
     mean_price = serializers.FloatField()
     total_value = serializers.FloatField()
     balance = serializers.FloatField()
-    stock = serializers.SlugRelatedField(queryset=Stock.objects.filter(active=True), slug_field='code')
+    asset = serializers.SlugRelatedField(queryset=Asset.objects.filter(active=True), slug_field='code')
     user = serializers.SlugRelatedField(queryset=User.objects.filter(active=True), slug_field='username')
     dividend_amount_received = serializers.FloatField()
 
@@ -119,16 +120,27 @@ class CustodySerializer(serializers.ModelSerializer):
         
 
 class CustodyDividendSerializer(serializers.ModelSerializer):
-    stock = serializers.SlugRelatedField(queryset=Dividend.objects.all(), slug_field='code', source='dividend.stock')
-    user = serializers.SlugRelatedField(queryset=Custody.objects.all(), slug_field='username', source='custody.user')
-    amount_received = serializers.FloatField()
-    date = serializers.SerializerMethodField()
-    
+    volume = serializers.FloatField(min_value=0)
+
     class Meta:
         model = CustodyDividend
-        exclude = ["custody", "dividend"]
+        fields = '__all__'
 
-    @swagger_serializer_method(serializers.DateField())
-    def get_date(self, obj):
-        return  obj.dividend.date
+    def validate(self, attrs):
+        if attrs['custody'].asset != attrs['dividend'].asset:
+            raise serializers.ValidationError("The custody and dividend must be from the same asset")
+        
+        return attrs
+
+    def to_representation(self, instance):
+        representation = {
+            'id': instance.id,
+            'asset': instance.custody.asset.code,
+            'volume': instance.volume,
+            'value': instance.dividend.value,
+            'amount_received': instance.amount_received,
+            'date': instance.dividend.date
+        }
+
+        return representation
     

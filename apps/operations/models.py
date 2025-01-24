@@ -1,15 +1,16 @@
 from typing import Any, Dict, List
+from django.db.models import QuerySet
 from django.db import models
 from django.db.models import Value, F
 from django.utils.timezone import now
 from operator import itemgetter
 
-from ..stocks.models import Dividend, Stock
+from ..assets.models import Dividend, Asset
 from ..authentication.models import User
 
 class Buy(models.Model):
-    volume = models.PositiveIntegerField(null=False, blank=False)
-    stock = models.ForeignKey(Stock, null=False, on_delete=models.CASCADE)
+    volume = models.FloatField(null=False, blank=False)
+    asset = models.ForeignKey(Asset, null=False, on_delete=models.CASCADE)
     price = models.FloatField(null=False, default=0)
     date = models.DateTimeField(null=False, default=now)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE, related_name='buys')
@@ -23,8 +24,8 @@ class Buy(models.Model):
 
 
 class Sell(models.Model):
-    volume = models.PositiveIntegerField(null=False, blank=False)
-    stock = models.ForeignKey(Stock, null=False, on_delete=models.CASCADE)
+    volume = models.FloatField(null=False, blank=False)
+    asset = models.ForeignKey(Asset, null=False, on_delete=models.CASCADE)
     price = models.FloatField(null=False, default=0)
     date = models.DateTimeField(null=False, default=now)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE, related_name='sells')
@@ -38,22 +39,22 @@ class Sell(models.Model):
     
 
 class Custody(models.Model):
-    volume = models.PositiveIntegerField(null=False, default=0)
+    volume = models.FloatField(null=False, default=0)
     total_cost = models.FloatField(null=False, default=0)
-    stock = models.ForeignKey(Stock, null=False, on_delete=models.CASCADE)
+    asset = models.ForeignKey(Asset, null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, null=False)
     active = models.BooleanField(null=False, default=True)
 
     class Meta():
-        unique_together = ('stock', 'user')
+        unique_together = ('asset', 'user')
 
     def __str__(self):
-        return f"{self.stock} - {self.user}"
+        return f"{self.asset} - {self.user}"
 
     def rebuild(self):
-        params = {'user': self.user, 'stock': self.stock, 'active': True}
+        params = {'user': self.user, 'asset': self.asset, 'active': True}
         buy_operations = Buy.objects.filter(**params).values('volume', 'price', 'date').annotate(type=Value('buy'))
         sell_operations = Sell.objects.filter(**params).values('volume', 'price', 'date').annotate(type=Value('sell'))
         
@@ -77,8 +78,8 @@ class Custody(models.Model):
         self.save()
 
     @property
-    def current_price(self) -> float:
-        return self.stock.current_price()
+    def last_price(self) -> float:
+        return self.asset.last_price()
     
     @property
     def mean_price(self) -> float:
@@ -95,7 +96,7 @@ class Custody(models.Model):
 
     @property
     def total_value(self) -> float:
-        return self.volume * self.current_price
+        return self.volume * self.last_price
     
     @property
     def balance(self) -> float:
@@ -106,7 +107,30 @@ class CustodyDividend(models.Model):
     custody = models.ForeignKey(Custody, null=False, on_delete=models.CASCADE, related_name='earned_dividends')
     dividend = models.ForeignKey(Dividend, null=False, on_delete=models.CASCADE)
     volume = models.PositiveIntegerField(null=False, blank=False, default=0)
+    created_at = models.DateTimeField(auto_now=True, null=False)
+    updated_at = models.DateTimeField(auto_now_add=True, null=False)
+    active = models.BooleanField(null=False, default=True)
+
+    class Meta():
+        unique_together = ('custody', 'dividend')
 
     @property
     def amount_received(self):
         return self.dividend.value * self.volume
+
+
+class CustodySnapshot(models.Model):
+    asset = models.ForeignKey(Asset, null=False, on_delete=models.CASCADE)
+    date = models.DateField(null=False, default=now)
+    volume = models.PositiveIntegerField(null=False, default=0)
+    total_cost = models.FloatField(null=False, default=0)
+    last_price = models.FloatField(null=False, default=0)
+    mean_price = models.FloatField(null=False, default=0)
+    dividend_amount_received = models.FloatField(null=False, default=0)
+    total_value = models.FloatField(null=False, default=0)
+    balance = models.FloatField(null=False, default=0)
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    active = models.BooleanField(null=False, default=True)
+
+    class Meta():
+        unique_together = ('asset', 'date')

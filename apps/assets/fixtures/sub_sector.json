@@ -1,0 +1,1658 @@
+[
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 1,
+        "fields": {
+            "name": "Specialty Chemicals",
+            "description": "Assets of companies specializing in the production of unique chemical products for specific applications.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 2,
+        "fields": {
+            "name": "Banks - Regional",
+            "description": "Assets of regional banks serving specific geographic areas.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 3,
+        "fields": {
+            "name": "REIT - Residential",
+            "description": "Assets of residential real estate investment trusts focusing on housing properties.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 4,
+        "fields": {
+            "name": "Real Estate Services",
+            "description": "Assets of companies providing services related to real estate transactions and management.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 5,
+        "fields": {
+            "name": "Asset Management",
+            "description": "Assets of companies offering investment management and financial planning services.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 6,
+        "fields": {
+            "name": "REIT - Retail",
+            "description": "Assets of retail real estate investment trusts focusing on shopping centers and retail properties.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 7,
+        "fields": {
+            "name": "Medical Care Facilities",
+            "description": "Assets of companies operating hospitals, clinics, and other medical facilities.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 8,
+        "fields": {
+            "name": "REIT - Diversified",
+            "description": "Assets of diversified real estate investment trusts with portfolios across various property types.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 9,
+        "fields": {
+            "name": "Consulting Services",
+            "description": "Assets of companies providing business and management consulting services.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 10,
+        "fields": {
+            "name": "Semiconductors",
+            "description": "Assets of companies designing and manufacturing semiconductor products for electronic devices.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 11,
+        "fields": {
+            "name": "REIT - Mortgage",
+            "description": "Assets of mortgage real estate investment trusts specializing in real estate financing.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 12,
+        "fields": {
+            "name": "Internet Retail",
+            "description": "Assets of companies operating online retail businesses.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 13,
+        "fields": {
+            "name": "Insurance - Property & Casualty",
+            "description": "Assets of companies providing insurance services for property and casualty coverage.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 14,
+        "fields": {
+            "name": "Specialty Industrial Machinery",
+            "description": "Assets of companies manufacturing specialized machinery for industrial applications.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 15,
+        "fields": {
+            "name": "Travel Services",
+            "description": "Assets of companies offering travel-related services such as booking and accommodation.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 16,
+        "fields": {
+            "name": "Packaged Foods",
+            "description": "Assets of companies producing and selling packaged food products.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 17,
+        "fields": {
+            "name": "Medical Distribution",
+            "description": "Assets of companies involved in the distribution of medical supplies and equipment.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 18,
+        "fields": {
+            "name": "Information Technology Services",
+            "description": "Assets of companies providing IT services, including consulting and support.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 19,
+        "fields": {
+            "name": "Farm Products",
+            "description": "Assets of companies engaged in farming and production of agricultural goods.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 20,
+        "fields": {
+            "name": "Insurance - Life",
+            "description": "Assets of companies providing life insurance products and services.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 21,
+        "fields": {
+            "name": "Industrial Distribution",
+            "description": "Assets of companies involved in the distribution of industrial products.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 22,
+        "fields": {
+            "name": "Engineering & Construction",
+            "description": "Assets of companies offering engineering and construction services.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 23,
+        "fields": {
+            "name": "REIT - Office",
+            "description": "Assets of companies operating office-focused Real Estate Investment Trusts (REITs).",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 24,
+        "fields": {
+            "name": "Building Products & Equipment",
+            "description": "Assets of companies manufacturing building products and equipment.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 25,
+        "fields": {
+            "name": "Biotechnology",
+            "description": "Assets of companies engaged in biotechnology research and development.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 26,
+        "fields": {
+            "name": "Software - Infrastructure",
+            "description": "Assets of companies developing infrastructure software products.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 27,
+        "fields": {
+            "name": "Utilities - Renewable",
+            "description": "Assets of companies in the utilities sector focused on renewable energy.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 28,
+        "fields": {
+            "name": "Drug Manufacturers - Specialty & Generic",
+            "description": "Assets of companies involved in the manufacturing of specialty and generic drugs.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 29,
+        "fields": {
+            "name": "Utilities - Regulated Electric",
+            "description": "Assets of companies in the utilities sector, specifically regulated electric companies.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 30,
+        "fields": {
+            "name": "Oil & Gas E&P",
+            "description": "Assets of companies involved in oil and gas exploration and production.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 31,
+        "fields": {
+            "name": "Specialty Retail",
+            "description": "Assets of companies involved in specialty retail, including unique or niche products.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 32,
+        "fields": {
+            "name": "Advertising Agencies",
+            "description": "Assets of companies providing advertising services and creative solutions.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 33,
+        "fields": {
+            "name": "Beverages - Brewers",
+            "description": "Assets of companies involved in brewing beverages, including beer and other drinks.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 34,
+        "fields": {
+            "name": "Credit Services",
+            "description": "Assets of companies providing credit and financial services to individuals and businesses.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 35,
+        "fields": {
+            "name": "Footwear & Accessories",
+            "description": "Assets of companies involved in manufacturing and selling footwear and accessories.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 36,
+        "fields": {
+            "name": "Telecom Services",
+            "description": "Assets of companies providing telecommunications services, including mobile and internet services.",
+            "sector": 11,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 37,
+        "fields": {
+            "name": "Aerospace & Defense",
+            "description": "Assets of companies involved in the aerospace and defense industries.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 38,
+        "fields": {
+            "name": "REIT - Specialty",
+            "description": "Assets of real estate investment trusts (REITs) specializing in unique property sectors.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 39,
+        "fields": {
+            "name": "Rental & Leasing Services",
+            "description": "Assets of companies involved in the rental and leasing of equipment, vehicles, and real estate.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 40,
+        "fields": {
+            "name": "Medical Devices",
+            "description": "Assets of companies manufacturing and selling medical devices and equipment.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 41,
+        "fields": {
+            "name": "Software - Application",
+            "description": "Assets of companies involved in developing and providing application software.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 42,
+        "fields": {
+            "name": "Utilities - Independent Power Producers",
+            "description": "Assets of companies involved in independent power generation, typically through renewable sources or other energy production methods.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 43,
+        "fields": {
+            "name": "Drug Manufacturers - General",
+            "description": "Assets of companies that manufacture a broad range of pharmaceutical products, excluding specialty drugs.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 44,
+        "fields": {
+            "name": "REIT - Healthcare Facilities",
+            "description": "Assets of real estate investment trusts (REITs) focused on healthcare facilities like hospitals, nursing homes, and medical offices.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 45,
+        "fields": {
+            "name": "Entertainment",
+            "description": "Assets of companies involved in entertainment, including movies, music, and live performances.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 46,
+        "fields": {
+            "name": "Consumer Electronics",
+            "description": "Assets of companies involved in the production and sale of consumer electronics like smartphones, TVs, and computers.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 47,
+        "fields": {
+            "name": "Restaurants",
+            "description": "Assets of companies operating restaurants, bars, and other foodservice businesses.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 48,
+        "fields": {
+            "name": "Auto Parts",
+            "description": "Assets of companies involved in the manufacturing and selling of auto parts and accessories.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 49,
+        "fields": {
+            "name": "Utilities - Regulated Gas",
+            "description": "Assets of companies providing regulated natural gas services to consumers.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 50,
+        "fields": {
+            "name": "Insurance - Reinsurance",
+            "description": "Assets of companies involved in the reinsurance sector, offering insurance to insurance companies.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 51,
+        "fields": {
+            "name": "Utilities - Diversified",
+            "description": "Assets of companies operating in multiple areas within the utilities sector, such as electricity, gas, and water services.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 52,
+        "fields": {
+            "name": "Household & Personal Products",
+            "description": "Assets of companies producing household goods and personal care products.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 53,
+        "fields": {
+            "name": "Beverages - Non-Alcoholic",
+            "description": "Assets of companies involved in the production and sale of non-alcoholic beverages such as juices, soft drinks, and water.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 54,
+        "fields": {
+            "name": "REIT - Hotel & Motel",
+            "description": "Assets of real estate investment trusts (REITs) specializing in hotels, motels, and other hospitality properties.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 55,
+        "fields": {
+            "name": "Packaging & Containers",
+            "description": "Assets of companies involved in packaging and container manufacturing, including plastics, paper, and metal packaging.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 56,
+        "fields": {
+            "name": "Confectioners",
+            "description": "Assets of companies involved in manufacturing and selling confectionery products like candy, chocolate, and snacks.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 57,
+        "fields": {
+            "name": "Tobacco",
+            "description": "Assets of companies involved in the production and sale of tobacco products.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 58,
+        "fields": {
+            "name": "Financial Data & Stock Exchanges",
+            "description": "Assets of companies providing financial data services, including stock exchanges and market analytics.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 59,
+        "fields": {
+            "name": "Oil & Gas Refining & Marketing",
+            "description": "Assets of companies involved in the refining and marketing of oil and gas products.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 60,
+        "fields": {
+            "name": "Communication Equipment",
+            "description": "Assets of companies involved in the manufacturing and selling of communication equipment like phones, radios, and networking hardware.",
+            "sector": 11,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 61,
+        "fields": {
+            "name": "Internet Content & Information",
+            "description": "Assets of companies providing internet content, including search engines, social media platforms, and news aggregators.",
+            "sector": 11,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 62,
+        "fields": {
+            "name": "Auto Manufacturers",
+            "description": "Assets of companies involved in the manufacturing of automobiles and related products.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 63,
+        "fields": {
+            "name": "Resorts & Casinos",
+            "description": "Assets of companies operating resorts, casinos, and related entertainment services.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 64,
+        "fields": {
+            "name": "Specialty Business Services",
+            "description": "Assets of companies providing specialized business services such as consulting, outsourcing, and other professional services.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 65,
+        "fields": {
+            "name": "Apparel Manufacturing",
+            "description": "Assets of companies involved in the manufacturing of apparel and clothing products.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 66,
+        "fields": {
+            "name": "Banks - Diversified",
+            "description": "Assets of banks offering a wide range of financial services, including retail, corporate, and investment banking.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 67,
+        "fields": {
+            "name": "Grocery Stores",
+            "description": "Assets of companies operating grocery stores and supermarkets.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 68,
+        "fields": {
+            "name": "Computer Hardware",
+            "description": "Assets of companies involved in the design, manufacture, and sale of computer hardware, such as desktops, laptops, and peripherals.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 69,
+        "fields": {
+            "name": "Tools & Accessories",
+            "description": "Assets of companies that manufacture and sell tools and accessories for industrial and personal use.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 70,
+        "fields": {
+            "name": "Electronic Components",
+            "description": "Assets of companies that design and manufacture electronic components, such as semiconductors, capacitors, and resistors.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 71,
+        "fields": {
+            "name": "Apparel Retail",
+            "description": "Assets of companies involved in the retail sale of apparel, including clothing and accessories stores.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 72,
+        "fields": {
+            "name": "Paper & Paper Products",
+            "description": "Assets of companies involved in the production and sale of paper products, including packaging materials.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 73,
+        "fields": {
+            "name": "Discount Stores",
+            "description": "Assets of companies operating discount retail stores, offering low-price products.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 74,
+        "fields": {
+            "name": "Airlines",
+            "description": "Assets of companies providing air transportation services for passengers and cargo.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 75,
+        "fields": {
+            "name": "Capital Markets",
+            "description": "Assets of companies involved in capital markets, including investment firms and stock exchanges.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 76,
+        "fields": {
+            "name": "Oil & Gas Equipment & Services",
+            "description": "Assets of companies providing equipment and services for the oil and gas industry.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 77,
+        "fields": {
+            "name": "REIT - Industrial",
+            "description": "Assets of real estate investment trusts (REITs) focusing on industrial properties.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 78,
+        "fields": {
+            "name": "Education & Training Services",
+            "description": "Assets of companies providing education and training services, including online courses and professional development.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 79,
+        "fields": {
+            "name": "Luxury Goods",
+            "description": "Assets of companies producing and selling luxury goods such as designer fashion, high-end watches, and fine jewelry.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 80,
+        "fields": {
+            "name": "Electronics & Computer Distribution",
+            "description": "Assets of companies involved in the distribution of electronic and computer products.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 81,
+        "fields": {
+            "name": "Home Improvement Retail",
+            "description": "Assets of companies operating home improvement retail stores, selling products for home construction and renovation.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 82,
+        "fields": {
+            "name": "Diagnostics & Research",
+            "description": "Assets of companies specializing in diagnostics and medical research services.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 83,
+        "fields": {
+            "name": "Scientific & Technical Instruments",
+            "description": "Assets of companies manufacturing scientific and technical instruments for measurement, testing, and research.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 84,
+        "fields": {
+            "name": "Medical Instruments & Supplies",
+            "description": "Assets of companies producing and selling medical instruments, devices, and supplies.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 85,
+        "fields": {
+            "name": "Integrated Freight & Logistics",
+            "description": "Assets of companies providing integrated freight and logistics services, including shipping and transportation.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 86,
+        "fields": {
+            "name": "Insurance - Diversified",
+            "description": "Assets of insurance companies offering a range of diversified insurance products, including life, health, and property.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 87,
+        "fields": {
+            "name": "Healthcare Plans",
+            "description": "Assets of companies providing healthcare insurance and medical care plans.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 88,
+        "fields": {
+            "name": "Chemicals",
+            "description": "Assets of companies involved in the production and sale of chemicals, including industrial and specialty chemicals.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 89,
+        "fields": {
+            "name": "Staffing & Employment Services",
+            "description": "Assets of companies providing staffing, recruitment, and employment services.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 90,
+        "fields": {
+            "name": "Real Estate - Development",
+            "description": "Assets of companies involved in the development of real estate properties, including residential, commercial, and industrial projects.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 91,
+        "fields": {
+            "name": "Recreational Vehicles",
+            "description": "Assets of companies manufacturing or selling recreational vehicles, including RVs and trailers.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 92,
+        "fields": {
+            "name": "Lodging",
+            "description": "Assets of companies providing lodging and accommodation services, including hotels, motels, and resorts.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 93,
+        "fields": {
+            "name": "Financial Conglomerates",
+            "description": "Assets of companies operating in multiple financial sectors, including banking, insurance, and investment services.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 94,
+        "fields": {
+            "name": "Steel",
+            "description": "Assets of companies involved in the production and processing of steel products.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 95,
+        "fields": {
+            "name": "Personal Services",
+            "description": "Assets of companies providing personal services, including beauty, fitness, and wellness services.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 96,
+        "fields": {
+            "name": "Real Estate - Diversified",
+            "description": "Assets of companies with diversified real estate holdings, including residential, commercial, and industrial properties.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 97,
+        "fields": {
+            "name": "Investment Brokerage - National",
+            "description": "Assets of companies offering national investment brokerage services.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 98,
+        "fields": {
+            "name": "Railroads",
+            "description": "Assets of companies involved in the operation of railroads and railway services.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 99,
+        "fields": {
+            "name": "Semiconductor Equipment & Materials",
+            "description": "Assets of companies involved in the manufacturing of semiconductor equipment and materials.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 100,
+        "fields": {
+            "name": "Insurance Brokers",
+            "description": "Assets of companies providing brokerage services in the insurance sector.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 101,
+        "fields": {
+            "name": "Utilities - Regulated Water",
+            "description": "Assets of companies providing regulated water utility services.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 102,
+        "fields": {
+            "name": "Residential Construction",
+            "description": "Assets of companies involved in residential construction, including homebuilding and property development.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 103,
+        "fields": {
+            "name": "Conglomerates",
+            "description": "Assets of diversified conglomerates operating in multiple industries and sectors.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 104,
+        "fields": {
+            "name": "Leisure",
+            "description": "Assets of companies in the leisure sector, including entertainment, travel, and recreation.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 105,
+        "fields": {
+            "name": "Agricultural Inputs",
+            "description": "Assets of companies providing agricultural inputs, including fertilizers, pesticides, and seeds.",
+            "sector": 6,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 106,
+        "fields": {
+            "name": "Gold",
+            "description": "Assets of companies involved in the extraction, production, and trading of gold.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 107,
+        "fields": {
+            "name": "Waste Management",
+            "description": "Assets of companies providing waste management services, including collection, disposal, and recycling.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 108,
+        "fields": {
+            "name": "Department Stores",
+            "description": "Assets of companies operating department stores, selling a variety of products such as clothing, home goods, and electronics.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 109,
+        "fields": {
+            "name": "Building Materials",
+            "description": "Assets of companies manufacturing and supplying building materials such as cement, bricks, and timber.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 110,
+        "fields": {
+            "name": "Health Information Services",
+            "description": "Assets of companies providing health information services, including medical records management and healthcare analytics.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 111,
+        "fields": {
+            "name": "Oil & Gas Integrated",
+            "description": "Assets of integrated oil and gas companies involved in exploration, production, and refining.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 112,
+        "fields": {
+            "name": "Other Industrial Metals & Mining",
+            "description": "Assets of companies involved in the mining and processing of industrial metals other than gold and silver.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 113,
+        "fields": {
+            "name": "Trucking",
+            "description": "Assets of companies providing trucking and freight transportation services.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 114,
+        "fields": {
+            "name": "Oil & Gas Midstream",
+            "description": "Assets of companies involved in the transportation and storage of oil and natural gas through pipelines and other infrastructure.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 115,
+        "fields": {
+            "name": "Farm & Heavy Construction Machinery",
+            "description": "Assets of companies manufacturing or selling farm and heavy construction machinery.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 116,
+        "fields": {
+            "name": "Pharmaceutical Retailers",
+            "description": "Assets of companies that operate retail pharmacies and sell pharmaceutical products directly to consumers.",
+            "sector": 4,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 117,
+        "fields": {
+            "name": "Electrical Equipment & Parts",
+            "description": "Assets of companies manufacturing or selling electrical equipment and parts, including transformers, switches, and electrical cables.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 118,
+        "fields": {
+            "name": "Gambling",
+            "description": "Assets of companies involved in gambling and gaming activities, including casinos, online gaming, and sports betting.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 119,
+        "fields": {
+            "name": "Beverages - Wineries & Distilleries",
+            "description": "Assets of companies producing alcoholic beverages, specifically wineries and distilleries.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 120,
+        "fields": {
+            "name": "Furnishings, Fixtures & Appliances",
+            "description": "Assets of companies manufacturing or selling home furnishings, fixtures, and appliances.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 121,
+        "fields": {
+            "name": "Textile Manufacturing",
+            "description": "Assets of companies engaged in the manufacturing of textiles and related products, including fabrics, yarn, and apparel.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 122,
+        "fields": {
+            "name": "Electronic Gaming & Multimedia",
+            "description": "Assets of companies involved in the development and distribution of electronic gaming and multimedia products.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 123,
+        "fields": {
+            "name": "Food Distribution",
+            "description": "Assets of companies involved in the distribution of food products, including wholesalers and distributors.",
+            "sector": 8,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 124,
+        "fields": {
+            "name": "Other Precious Metals & Mining",
+            "description": "Assets of companies engaged in the mining and processing of precious metals other than gold and silver, including platinum and palladium.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 125,
+        "fields": {
+            "name": "Auto & Truck Dealerships",
+            "description": "Assets of companies involved in the sale of automobiles and trucks, including new and used vehicle dealerships.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 126,
+        "fields": {
+            "name": "Copper",
+            "description": "Assets of companies involved in the extraction, production, and trading of copper.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 127,
+        "fields": {
+            "name": "Pollution & Treatment Controls",
+            "description": "Assets of companies involved in pollution control and treatment services, including waste treatment, air quality, and water purification.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 128,
+        "fields": {
+            "name": "Solar",
+            "description": "Assets of companies involved in the production, installation, and maintenance of solar energy systems.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 129,
+        "fields": {
+            "name": "Money Center Banks",
+            "description": "Assets of large banks that provide services to corporations, governments, and other large financial institutions.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 130,
+        "fields": {
+            "name": "Aluminum",
+            "description": "Assets of companies involved in the extraction, production, and trading of aluminum.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 131,
+        "fields": {
+            "name": "Marine Shipping",
+            "description": "Assets of companies involved in marine shipping, including shipping lines and port operators.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 132,
+        "fields": {
+            "name": "Infrastructure Operations",
+            "description": "Assets of companies involved in the operation and management of infrastructure, including transportation, utilities, and public services.",
+            "sector": 9,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 133,
+        "fields": {
+            "name": "Shell Companies",
+            "description": "Assets of companies that are created to hold assets or manage financial arrangements without direct operations.",
+            "sector": 2,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 134,
+        "fields": {
+            "name": "Lumber & Wood Production",
+            "description": "Assets of companies involved in the production and processing of lumber and wood products.",
+            "sector": 1,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 135,
+        "fields": {
+            "name": "Property Management",
+            "description": "Assets of companies providing property management services for residential, commercial, and industrial properties.",
+            "sector": 3,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 136,
+        "fields": {
+            "name": "Security & Protection Services",
+            "description": "Assets of companies providing security and protection services, including surveillance and consulting.",
+            "sector": 5,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 137,
+        "fields": {
+            "name": "Oil & Gas Drilling",
+            "description": "Assets of companies involved in the exploration and drilling for oil and natural gas.",
+            "sector": 10,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.SubSector",
+        "pk": 138,
+        "fields": {
+            "name": "Metal Fabrication",
+            "description": "Assets of companies involved in the manufacturing and fabrication of metal structures and components.",
+            "sector": 7,
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    }
+]

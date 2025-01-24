@@ -3,4 +3,5 @@ from django.apps import AppConfig
 
 class CronConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cron'
+    name = 'apps.cron'
+    label = 'apps_cron'

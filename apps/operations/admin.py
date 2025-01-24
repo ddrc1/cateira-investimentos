@@ -5,21 +5,21 @@ from django.core import exceptions
 from .models import Buy, Sell, Custody, CustodyDividend
 
 class AdminBuy(admin.ModelAdmin):
-    list_display = ('id', 'stock', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
-    list_filter = ('stock', 'date', 'created_at', 'updated_at', 'user', 'active')
-    list_editable = ('volume', 'stock', 'price', 'date', 'user', 'active')
+    list_display = ('id', 'asset', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
+    list_filter = ('asset', 'date', 'created_at', 'updated_at', 'user', 'active')
+    list_editable = ('volume', 'asset', 'price', 'date', 'user', 'active')
 
     @transaction.atomic
     def save_model(self, request, obj, form, change):
         obj.save()
 
         try:
-            custody = Custody.objects.get(user=obj.user, stock=obj.stock)
+            custody = Custody.objects.get(user=obj.user, asset=obj.asset)
         except Custody.DoesNotExist:
             if change:
                 raise exceptions.ObjectDoesNotExist("Custody object does not exist")
             else:
-                custody = Custody.objects.create(stock=obj.stock, user=obj.user)
+                custody = Custody.objects.create(asset=obj.asset, user=obj.user)
                 custody.save()
         
         try:
@@ -30,16 +30,16 @@ class AdminBuy(admin.ModelAdmin):
 
 
 class AdminSell(admin.ModelAdmin):
-    list_display = ('id', 'stock', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
-    list_filter = ('stock', 'date', 'created_at', 'updated_at', 'user', 'active')
-    list_editable = ('volume', 'stock', 'price', 'date', 'user', 'active')
+    list_display = ('id', 'asset', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
+    list_filter = ('asset', 'date', 'created_at', 'updated_at', 'user', 'active')
+    list_editable = ('volume', 'asset', 'price', 'date', 'user', 'active')
 
     @transaction.atomic
     def save_model(self, request, obj, form, change):
         obj.save()
 
         try:
-            custody = Custody.objects.get(user=obj.user, stock=obj.stock)
+            custody = Custody.objects.get(user=obj.user, asset=obj.asset)
             custody.rebuild()
         except Custody.DoesNotExist:
             raise exceptions.ObjectDoesNotExist("Custody object does not exist")
@@ -48,14 +48,15 @@ class AdminSell(admin.ModelAdmin):
 
 
 class AdminCostody(admin.ModelAdmin):
-    list_display = ('id', 'stock', 'volume', 'total_cost', 'current_price', 'mean_price', 'total_value', 'balance', 
+    list_display = ('id', 'asset', 'volume', 'total_cost', 'last_price', 'mean_price', 'total_value', 'balance', 
                     'user', 'created_at', 'updated_at', 'active')
     list_filter = ('created_at', 'updated_at', 'active')
 
 
 class AdminCostodyDividend(admin.ModelAdmin):
-    list_display = ('id', 'custody__stock', 'custody__user', 'dividend__date', 'amount_received')
-    list_filter = ('dividend__date', 'custody__stock')
+    list_display = ('id', 'custody__asset', 'volume', 'dividend__value', 'amount_received', 'custody__user', 'dividend__date')
+    list_filter = ('dividend__date', 'created_at', 'updated_at', 'active')
+    list_editable = ('volume',)
 
 
 admin.site.register(Buy, AdminBuy)

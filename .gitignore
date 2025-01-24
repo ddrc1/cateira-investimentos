@@ -1,3 +1,6 @@
 .env
 db.sqlite3
 *.pyc
+apps/utils/scripts/scraping/info_list_checkpoint.csv
+chromedriver
+geckodriver

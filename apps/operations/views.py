@@ -1,15 +1,16 @@
 from typing import Any
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, exceptions
 from rest_framework.decorators import action
 from django.db.models import QuerySet
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from ..utils.pagination import CustomPageNumberPagination
 
 from .serializers import BuySerializer, SellSerializer, CustodySerializer, CustodyDividendSerializer
 from .swagger.swagger_serializers import BuyResponseSerializer, PaginatedBuyResponseSerializer, \
     SellResponseSerializer, PaginatedSellResponseSerializer, PaginatedCustodyResponseSerializer, \
-    PaginatedCustodyDividendResponseSerializer
+    PaginatedCustodyDividendResponseSerializer, CustodyDividendResponseSerializer
 
 from .models import Buy, Sell, Custody, CustodyDividend
 from ..authentication.models import User
@@ -20,11 +21,10 @@ class OperationsBaseViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self) -> QuerySet[Any]:
         user: User = self.request.user
-        if user.is_staff:
-            return self.queryset
-        
-        queryset: QuerySet[Any] = self.queryset.filter(user=user)
-        return queryset
+        if not user.is_staff:
+            queryset: QuerySet[Any] = self.queryset.filter(user=user)
+
+        return queryset.order_by("pk")
     
     def perform_destroy(self, instance):
         instance.active = False
@@ -78,36 +78,50 @@ class CustodyViewSet(viewsets.ModelViewSet):
     serializer_class = CustodySerializer
     http_method_names = ['get']
     pagination_class = CustomPageNumberPagination
-
-    serializers = {
-        "default": serializer_class,
-        "list_dividends": CustodyDividendSerializer,
-        "retrieve_dividends": CustodyDividendSerializer
-    }
-
-    def get_serializer_class(self) -> Any:
-        if self.action in self.serializers:
-            return self.serializers[self.action]
-        return self.serializers['default']
         
-    def get_queryset(self) -> QuerySet[Custody | CustodyDividend]:
+    def get_queryset(self) -> QuerySet[Custody]:
         queryset: QuerySet[Custody] = self.queryset.filter(user=self.request.user)
 
-        if self.action in ["list_dividends", "retrieve_dividends"]:
-            queryset: QuerySet[CustodyDividend] = CustodyDividend.objects.filter(custody__pk__in=queryset.values("pk"))
-
-        return queryset
+        return queryset.order_by("pk")
     
     @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedCustodyResponseSerializer()})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
     
+    @swagger_auto_schema(responses={status.HTTP_200_OK: CustodyDividendResponseSerializer()})
+    def retrieve(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
+
+class CustodyDividendViewSet(viewsets.ModelViewSet):
+    queryset = CustodyDividend.objects.filter(active=True)
+    http_method_names = ['get', 'put', 'post', 'delete']
+    serializer_class = CustodyDividendSerializer
+    pagination_class = CustomPageNumberPagination
+
+    def get_queryset(self) -> QuerySet[CustodyDividend]:
+        queryset: QuerySet[CustodyDividend] = self.queryset.filter(custody__user=self.request.user)
+        return queryset.order_by("-dividend__date")
+
+    def perform_destroy(self, instance):
+        instance.active = False
+        instance.save()
+
     @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedCustodyDividendResponseSerializer()})
-    @action(detail=False, methods=['get'], url_path="dividends")
-    def list_dividends(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
-    @action(detail=False, methods=['get'], url_path="dividends/(?P<wallet_dividend_id>\d+)")
-    def retrieve_dividends(self, request, *args, **kwargs):
-        self.kwargs['pk'] = kwargs['wallet_dividend_id']
+    @swagger_auto_schema(responses={status.HTTP_200_OK: CustodyDividendResponseSerializer()})
+    def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_201_CREATED: CustodyDividendResponseSerializer()})
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(responses={status.HTTP_200_OK: CustodyDividendResponseSerializer()})
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+    
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)

@@ -1,0 +1,134 @@
+[
+    {
+        "model": "apps_assets.Sector",
+        "pk": 1,
+        "fields": {
+            "name": "Basic Materials",
+            "description": "Companies involved in the production and processing of raw materials, such as metals, chemicals, and forestry products.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 2,
+        "fields": {
+            "name": "Financial Services",
+            "description": "Companies providing financial services, including banking, insurance, and investment management.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 3,
+        "fields": {
+            "name": "Real Estate",
+            "description": "Companies in the real estate sector, including property development, management, and REITs.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 4,
+        "fields": {
+            "name": "Healthcare",
+            "description": "Companies in the healthcare sector, including pharmaceuticals, hospitals, and medical devices.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 5,
+        "fields": {
+            "name": "Industrials",
+            "description": "Companies in the industrial sector, including manufacturing, machinery, and aerospace.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 6,
+        "fields": {
+            "name": "Technology",
+            "description": "Companies in the technology sector, including software, hardware, and IT services.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 7,
+        "fields": {
+            "name": "Consumer Cyclical",
+            "description": "Companies in the consumer cyclical sector, such as automotive, housing, and retail.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 8,
+        "fields": {
+            "name": "Consumer Defensive",
+            "description": "Companies providing essential goods and services, such as food, beverages, and household products.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 9,
+        "fields": {
+            "name": "Utilities",
+            "description": "Companies in the utilities sector, such as electricity, water, and natural gas providers.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 10,
+        "fields": {
+            "name": "Energy",
+            "description": "Companies in the energy sector, such as oil, gas, and renewable energy.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 11,
+        "fields": {
+            "name": "Communication Services",
+            "description": "Companies in the communication services sector, such as telecommunications and media.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    },
+    {
+        "model": "apps_assets.Sector",
+        "pk": 12,
+        "fields": {
+            "name": "Financial",
+            "description": "Companies in the financial sector, including banks, investment firms, and insurers.",
+            "created_at": "2025-01-01T12:00:00Z",
+            "updated_at": "2025-01-01T12:00:00Z",
+            "active": true
+        }
+    }
+]

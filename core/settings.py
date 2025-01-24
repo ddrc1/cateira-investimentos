@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,11 +44,14 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
     'corsheaders',
+    'django_celery_results',
+    'django_celery_beat',
     'apps.authentication',
-    'apps.stocks',
+    'apps.assets',
     'apps.operations',
     'apps.users',
-    'apps.audit'
+    'apps.audit',
+    'apps.cron'
 ]
 
 MIDDLEWARE = [
@@ -88,9 +92,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': config('POSTGRES_HOST'),
+        'PORT': config('POSTGRES_PORT'),
+    },
 }
 
 
@@ -170,3 +178,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# RABBITMQ settings
+# RABBITMQ_USER = config('RABBITMQ_USER', cast=str)
+# RABBITMQ_PASSWORD = config('RABBITMQ_PASSWORD', cast=str)
+# RABBITMQ_HOST = config('RABBITMQ_HOST', cast=str)
+# RABBITMQ_PORT = config('RABBITMQ_PORT', default='5672', cast=int)
+
+# CELERY settings #
+CELERY_BROKER_URL = f"pyamqp://guest@localhost//"#{RABBITMQ_USER}:{RABBITMQ_PASSWORD}@{RABBITMQ_HOST}:5672//"
+CELERY_TIMEZONE = 'America/Fortaleza'
+CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_RESULT_BACKEND = 'rpc://'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_TASK_TRACK_STARTED = True
+# CELERY_TASK_TIME_LIMIT = 30 * 60
+# CELERY_TASK_CREATE_MISSING_QUEUES = True
+# CELERYD_PREFETCH_MULTIPLIER = 1
+# CELERY_ACKS_LATE = True
+
+# QUEUE_NAME_CELERY = f"telemetria_queue_{os.environ['ENVIRONMENT'].lower()}"
