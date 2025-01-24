@@ -4,10 +4,9 @@ services:
         build:
             dockerfile: ./docker/Dockerfile.server
         restart: unless-stopped
-        # volumes:
-        #     - "../:/app"
-        ports:
-            - 8000:8000
+        command: gunicorn core.wsgi:application --bind 0.0.0.0:8000        
+        volumes:
+            - ./staticfiles:/app/staticfiles
         env_file:
             - .env
         networks:
@@ -24,6 +23,7 @@ services:
         container_name: nginx
         volumes:
             - ./docker/nginx.conf:/etc/nginx/nginx.conf
+            - ./staticfiles:/var/www/app/staticfiles
         ports:
             - 8000:80
         networks:
