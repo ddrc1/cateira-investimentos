@@ -69,7 +69,7 @@ class Asset(models.Model):
     #     return super().save()
     
     def last_price(self):
-        last_price: Optional[AssetPrice] = self.prices.order_by('-date').last()
+        last_price: Optional[AssetPrice] = self.prices.order_by('date').last()
         if last_price:
             return last_price.close_price
 

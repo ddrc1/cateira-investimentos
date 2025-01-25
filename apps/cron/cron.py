@@ -8,12 +8,13 @@ import pandas as pd
 from datetime import timedelta, datetime
 from concurrent.futures import ThreadPoolExecutor
 from decouple import config
+from pymongo import MongoClient
 
 from ..assets.models import Asset, Dividend, AssetPrice
 from ..operations.models import Custody, CustodySnapshot
 
 def datalake_connection():
-    client = MongoClient(f"mongodb://{config('DATALAKE_HOST')}:{config('DATALAKE_PORT')}/")
+    client = MongoClient(f"mongodb://{config('DATALAKE_USER')}:{config('DATALAKE_PASSWORD')}@{config('DATALAKE_HOST')}/")
     db = client[config('DATALAKE_DB')]
     collection = db[config('DATALAKE_COLLECTION')]
     return collection
@@ -46,7 +47,7 @@ def create_custodies_snaphots():
 @transaction.atomic
 def get_ticker_price_data():
     assets: QuerySet[Asset] = Asset.objects.filter(active=True)
-    datalake_connection = datalake_connection()
+    connection = datalake_connection()
 
     @transaction.atomic
     def process(asset: Asset):
@@ -69,11 +70,11 @@ def get_ticker_price_data():
             hist: pd.DataFrame = tick.history(period='max', end=datetime.date() - timedelta(days=1), interval='1d')
             hist.dropna(inplace=True)
         
-        if tick.empty:
+        if hist.empty:
             return
 
         if len(tick.info.keys()) > 1:
-            datalake_connection.insert_one({"data": tick.info, "asset": asset.code, "date": datetime.now()})
+            connection.insert_one({"data": tick.info, "asset": asset.code, "date": datetime.now()})
 
         hist.index = hist.index.tz_convert("UTC")
 
@@ -91,5 +92,5 @@ def get_ticker_price_data():
             #TODO log error
             return
         
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=1) as executor:
         executor.map(process, assets)

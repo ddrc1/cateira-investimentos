@@ -100,7 +100,7 @@ class Custody(models.Model):
     
     @property
     def balance(self) -> float:
-        return self.total_cost - self.total_value
+        return self.total_value - self.total_cost
     
 
 class CustodyDividend(models.Model):
