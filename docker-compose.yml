@@ -43,7 +43,7 @@ services:
     carteira-celery:
         container_name: carteira-celery
         build:
-            dockerfile: docker/Dockerfile.server
+            dockerfile: ./docker/Dockerfile.celery
         restart: unless-stopped
         command: celery -A core worker -l INFO 
         volumes:
@@ -60,7 +60,7 @@ services:
     carteira-celery-beat:
         container_name: carteira-celery-beat
         build:
-            dockerfile: docker/Dockerfile.server
+            dockerfile: ./docker/Dockerfile.celery
         restart: unless-stopped
         command: celery -A core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
         volumes:
