@@ -1,18 +1,17 @@
 from typing import Any
-from rest_framework import viewsets, status, exceptions
-from rest_framework.decorators import action
+from rest_framework import viewsets, status
 from django.db.models import QuerySet
 from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
 
 from ..utils.pagination import CustomPageNumberPagination
 
 from .serializers import BuySerializer, SellSerializer, CustodySerializer, CustodyDividendSerializer
 from .swagger.swagger_serializers import BuyResponseSerializer, PaginatedBuyResponseSerializer, \
     SellResponseSerializer, PaginatedSellResponseSerializer, PaginatedCustodyResponseSerializer, \
-    PaginatedCustodyDividendResponseSerializer, CustodyDividendResponseSerializer
+    PaginatedCustodyDividendResponseSerializer, CustodyDividendResponseSerializer, CustodySnapshotSerializer, \
+    PaginatedCustodySnapshotResponseSerializer
 
-from .models import Buy, Sell, Custody, CustodyDividend
+from .models import Buy, Sell, Custody, CustodyDividend, CustodySnapshot
 from ..authentication.models import User
 
 class OperationsBaseViewSet(viewsets.ModelViewSet):
@@ -20,9 +19,11 @@ class OperationsBaseViewSet(viewsets.ModelViewSet):
     pagination_class = CustomPageNumberPagination
 
     def get_queryset(self) -> QuerySet[Any]:
+        queryset = self.queryset
+
         user: User = self.request.user
         if not user.is_staff:
-            queryset: QuerySet[Any] = self.queryset.filter(user=user)
+            queryset: QuerySet[Any] = queryset.filter(user=user)
 
         return queryset.order_by("pk")
     
@@ -125,3 +126,18 @@ class CustodyDividendViewSet(viewsets.ModelViewSet):
     
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
+    
+
+class CustodySnapshotViewSet(viewsets.ModelViewSet):
+    queryset = CustodySnapshot.objects.filter(active=True)
+    http_method_names = ['get']
+    serializer_class = CustodyDividendSerializer
+    pagination_class = CustomPageNumberPagination
+
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PaginatedCustodySnapshotResponseSerializer()})
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    @swagger_auto_schema(responses={status.HTTP_200_OK: CustodySnapshotSerializer()})
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)

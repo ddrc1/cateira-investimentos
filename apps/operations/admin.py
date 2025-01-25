@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import transaction
 from django.core import exceptions
 
-from .models import Buy, Sell, Custody, CustodyDividend
+from .models import Buy, Sell, Custody, CustodyDividend, CustodySnapshot
 
 class AdminBuy(admin.ModelAdmin):
     list_display = ('id', 'asset', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
@@ -59,7 +59,16 @@ class AdminCostodyDividend(admin.ModelAdmin):
     list_editable = ('volume',)
 
 
+class AdminCostodySnapshot(admin.ModelAdmin):
+    list_display = ('id', 'asset', 'date', 'volume', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received',
+                    'total_value', 'balance', 'user', 'active')
+    list_filter = ('date', 'active')
+    list_editable = ('volume', 'asset', 'date', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received', 
+                     'total_value', 'balance', 'user', 'active')
+
+
 admin.site.register(Buy, AdminBuy)
 admin.site.register(Sell, AdminSell)
 admin.site.register(Custody, AdminCostody)
 admin.site.register(CustodyDividend, AdminCostodyDividend)
+admin.site.register(CustodySnapshot, AdminCostodySnapshot)

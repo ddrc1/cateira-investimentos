@@ -40,7 +40,7 @@ def create_custodies_snaphots():
     custodies: QuerySet[Custody] = Custody.objects.filter(active=True, volume__gt=0)
     for custody in custodies:
         CustodySnapshot.objects.create(asset=custody.asset, volume=custody.volume, total_cost=custody.total_cost,
-                                       last_price=custody.last_price, mean_price=custody.mean_price,
+                                       last_price=custody.last_price, mean_price=custody.mean_price, user=custody.user,
                                        dividend_amount_received=custody.dividend_amount_received, total_value=custody.total_value)
 
 @transaction.atomic

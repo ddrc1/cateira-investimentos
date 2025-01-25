@@ -144,3 +144,28 @@ class CustodyDividendSerializer(serializers.ModelSerializer):
 
         return representation
     
+
+class CustodySnapshotSerializer(serializers.ModelSerializer):
+    asset = serializers.SlugRelatedField(queryset=Asset.objects.filter(active=True), slug_field='code')
+    user = serializers.SlugRelatedField(queryset=User.objects.filter(active=True), slug_field='username')
+
+    class Meta:
+        model = Custody
+        exclude = ['created_at', 'updated_at', 'active']
+    
+    def to_representation(self, instance):
+        representation = {
+            'id': instance.id,
+            'asset': instance.asset.code,
+            'date': instance.date,
+            'volume': instance.volume,
+            'total_cost': instance.total_cost,
+            'last_price': instance.last_price,
+            'mean_price': instance.mean_price,
+            'dividend_amount_received': instance.dividend_amount_received,
+            'total_value': instance.total_value,
+            'balance': instance.balance,
+            'user': instance.user.username
+        }
+
+        return representation

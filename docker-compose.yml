@@ -6,6 +6,7 @@ services:
         restart: unless-stopped
         command: gunicorn core.wsgi:application --bind 0.0.0.0:8000        
         volumes:
+            - .:/app
             - ./staticfiles:/app/staticfiles
         env_file:
             - .env
@@ -17,10 +18,9 @@ services:
             timeout: 5s
             retries: 3
 
-
-    nginx:
+    carteira-nginx:
         image: nginx:latest
-        container_name: nginx
+        container_name: carteira-nginx
         volumes:
             - ./docker/nginx.conf:/etc/nginx/nginx.conf
             - ./staticfiles:/var/www/app/staticfiles
@@ -29,6 +29,48 @@ services:
         networks:
             - carteira-network
         depends_on:
+            - carteira-app
+
+    carteira-rabbitmq:
+        container_name: carteira-rabbitmq
+        image: rabbitmq:management-alpine
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        networks:
+            - carteira-network
+
+    carteira-celery:
+        container_name: carteira-celery
+        build:
+            dockerfile: docker/Dockerfile.server
+        restart: unless-stopped
+        command: celery -A core worker -l INFO 
+        volumes:
+            - .:/app
+        env_file:
+            - .env
+        networks:
+            - carteira-network
+        depends_on:
+            - carteira-rabbitmq
+            - carteira-app
+
+
+    carteira-celery-beat:
+        container_name: carteira-celery-beat
+        build:
+            dockerfile: docker/Dockerfile.server
+        restart: unless-stopped
+        command: celery -A core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+        volumes:
+            - .:/app
+        env_file:
+            - .env
+        networks:
+            - carteira-network
+        depends_on:
+            - carteira-rabbitmq
             - carteira-app
 
 networks:

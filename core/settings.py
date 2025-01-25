@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v+v_$^ar^=qsci2hc+mj*9(ypdfd3$4$k+(hqm*%dmg#mi457_'
+SECRET_KEY = config("SECRET_KEY", cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -176,7 +176,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-print(STATIC_ROOT)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -186,11 +185,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # RABBITMQ settings
 # RABBITMQ_USER = config('RABBITMQ_USER', cast=str)
 # RABBITMQ_PASSWORD = config('RABBITMQ_PASSWORD', cast=str)
-# RABBITMQ_HOST = config('RABBITMQ_HOST', cast=str)
+RABBITMQ_HOST = config('RABBITMQ_HOST', cast=str)
 # RABBITMQ_PORT = config('RABBITMQ_PORT', default='5672', cast=int)
 
 # CELERY settings #
-CELERY_BROKER_URL = f"pyamqp://guest@localhost//"#{RABBITMQ_USER}:{RABBITMQ_PASSWORD}@{RABBITMQ_HOST}:5672//"
+CELERY_BROKER_URL = f"pyamqp://guest@{RABBITMQ_HOST}//"
 CELERY_TIMEZONE = 'America/Fortaleza'
 CELERY_RESULT_BACKEND = 'django-db'
 # CELERY_RESULT_BACKEND = 'rpc://'
@@ -202,5 +201,3 @@ CELERY_RESULT_BACKEND = 'django-db'
 # CELERY_TASK_CREATE_MISSING_QUEUES = True
 # CELERYD_PREFETCH_MULTIPLIER = 1
 # CELERY_ACKS_LATE = True
-
-# QUEUE_NAME_CELERY = f"telemetria_queue_{os.environ['ENVIRONMENT'].lower()}"

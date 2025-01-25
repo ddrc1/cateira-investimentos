@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from ...operations.models import Buy, Sell
-from ..serializers import CustodySerializer, CustodyDividendSerializer
+from ..serializers import CustodySerializer, CustodySnapshotSerializer
 
 class PaginatedResponseSerializer(serializers.Serializer):
     count = serializers.IntegerField()
@@ -57,3 +57,7 @@ class PaginatedCustodyResponseSerializer(PaginatedResponseSerializer):
 
 class PaginatedCustodyDividendResponseSerializer(PaginatedResponseSerializer):
     results = CustodyDividendResponseSerializer(many=True)
+
+
+class PaginatedCustodySnapshotResponseSerializer(PaginatedResponseSerializer):
+    results = CustodySnapshotSerializer(many=True)
