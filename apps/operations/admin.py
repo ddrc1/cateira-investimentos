@@ -39,6 +39,7 @@ class AdminSell(BaseAdmin):
     list_display = ('id', 'asset', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
     list_filter = ('date', 'created_at', 'updated_at', 'user', 'active')
     list_editable = ('volume', 'asset', 'price', 'date', 'user', 'active')
+    autocomplete_fields = ('asset', 'user')
 
     @transaction.atomic
     def save_model(self, request, obj, form, change):
@@ -71,6 +72,7 @@ class AdminCostodySnapshot(BaseAdmin):
     list_filter = ('date', 'active')
     list_editable = ('volume', 'asset', 'date', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received', 
                      'total_value', 'balance', 'user', 'active')
+    autocomplete_fields = ('asset', 'user')
 
 
 admin.site.register(Buy, AdminBuy)
