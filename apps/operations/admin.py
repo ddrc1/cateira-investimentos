@@ -4,10 +4,16 @@ from django.core import exceptions
 
 from .models import Buy, Sell, Custody, CustodyDividend, CustodySnapshot
 
-class AdminBuy(admin.ModelAdmin):
+
+class BaseAdmin(admin.ModelAdmin):
+    list_per_page = 20
+
+
+class AdminBuy(BaseAdmin):
     list_display = ('id', 'asset', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
-    list_filter = ('asset', 'date', 'created_at', 'updated_at', 'user', 'active')
+    list_filter = ('date', 'created_at', 'updated_at', 'user', 'active')
     list_editable = ('volume', 'asset', 'price', 'date', 'user', 'active')
+    autocomplete_fields = ('asset', 'user')
 
     @transaction.atomic
     def save_model(self, request, obj, form, change):
@@ -29,9 +35,9 @@ class AdminBuy(admin.ModelAdmin):
         
 
 
-class AdminSell(admin.ModelAdmin):
+class AdminSell(BaseAdmin):
     list_display = ('id', 'asset', 'volume', 'price', 'date', 'user', 'created_at', 'updated_at', 'active')
-    list_filter = ('asset', 'date', 'created_at', 'updated_at', 'user', 'active')
+    list_filter = ('date', 'created_at', 'updated_at', 'user', 'active')
     list_editable = ('volume', 'asset', 'price', 'date', 'user', 'active')
 
     @transaction.atomic
@@ -47,19 +53,19 @@ class AdminSell(admin.ModelAdmin):
             raise exceptions.ValidationError(e.args)
 
 
-class AdminCostody(admin.ModelAdmin):
+class AdminCostody(BaseAdmin):
     list_display = ('id', 'asset', 'volume', 'total_cost', 'last_price', 'mean_price', 'total_value', 'balance', 
-                    'user', 'created_at', 'updated_at', 'active')
+                    'dividend_amount_received', 'user', 'created_at', 'updated_at', 'active')
     list_filter = ('created_at', 'updated_at', 'active')
 
 
-class AdminCostodyDividend(admin.ModelAdmin):
+class AdminCostodyDividend(BaseAdmin):
     list_display = ('id', 'custody__asset', 'volume', 'dividend__value', 'amount_received', 'custody__user', 'dividend__date')
     list_filter = ('dividend__date', 'created_at', 'updated_at', 'active')
     list_editable = ('volume',)
 
 
-class AdminCostodySnapshot(admin.ModelAdmin):
+class AdminCostodySnapshot(BaseAdmin):
     list_display = ('id', 'asset', 'date', 'volume', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received',
                     'total_value', 'balance', 'user', 'active')
     list_filter = ('date', 'active')
