@@ -65,7 +65,7 @@ def get_ticker_price_data():
             return
 
         if asset.prices.exists():
-            hist = tick.history(period="1d", start=asset.prices.last().date + timedelta(days=1))
+            hist = tick.history(period="1d", start=asset.prices.last().date - timedelta(days=1))
         else:
             hist: pd.DataFrame = tick.history(period='max', end=datetime.date() - timedelta(days=1), interval='1d')
             hist.dropna(inplace=True)
