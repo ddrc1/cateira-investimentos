@@ -70,7 +70,7 @@ class AdminCostodySnapshot(BaseAdmin):
     list_display = ('id', 'asset', 'date', 'volume', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received',
                     'total_value', 'balance', 'user', 'active')
     list_filter = ('date', 'active')
-    list_editable = ('volume', 'asset', 'date', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received', 
+    list_editable = ('volume', 'date', 'total_cost', 'last_price', 'mean_price', 'dividend_amount_received', 
                      'total_value', 'balance', 'user', 'active')
     autocomplete_fields = ('asset', 'user')
 
