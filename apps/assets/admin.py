@@ -39,7 +39,7 @@ class AdminSubSector(BaseAdmin):
 class AdminDividend(BaseAdmin):
     list_display = ('id', 'asset', 'value', 'date')
     list_filter = ('date',)
-    list_editable = ('value',)
+    list_editable = ('value', 'date')
 
 
 admin.site.register(Asset, AdminAsset)
