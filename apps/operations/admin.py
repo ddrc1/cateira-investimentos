@@ -58,12 +58,14 @@ class AdminCostody(BaseAdmin):
     list_display = ('id', 'asset', 'volume', 'total_cost', 'last_price', 'mean_price', 'total_value', 'balance', 
                     'dividend_amount_received', 'user', 'created_at', 'updated_at', 'active')
     list_filter = ('created_at', 'updated_at', 'active')
+    search_fields = ('asset__code', 'user__username')
 
 
 class AdminCostodyDividend(BaseAdmin):
     list_display = ('id', 'custody__asset', 'volume', 'dividend__value', 'amount_received', 'custody__user', 'dividend__date')
     list_filter = ('dividend__date', 'created_at', 'updated_at', 'active')
     list_editable = ('volume',)
+    autocomplete_fields = ('custody', 'dividend')
 
 
 class AdminCostodySnapshot(BaseAdmin):

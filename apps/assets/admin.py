@@ -30,6 +30,7 @@ class AdminSector(BaseAdmin):
     list_filter = ('created_at', 'updated_at', 'active')
     list_editable = ('name', 'description', 'active')
 
+
 class AdminSubSector(BaseAdmin):
     list_display = ('id', 'name', 'description', 'sector', 'created_at', 'updated_at', 'active')
     list_filter = ('sector', 'created_at', 'updated_at', 'active')
@@ -40,6 +41,7 @@ class AdminDividend(BaseAdmin):
     list_display = ('id', 'asset', 'value', 'date')
     list_filter = ('date',)
     list_editable = ('value',)
+    search_fields = ('asset__code', 'date')
 
 
 admin.site.register(Asset, AdminAsset)

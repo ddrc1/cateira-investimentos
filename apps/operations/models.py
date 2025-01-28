@@ -51,7 +51,7 @@ class Custody(models.Model):
         unique_together = ('asset', 'user')
 
     def __str__(self):
-        return f"{self.asset} - {self.user}"
+        return f"{self.asset.code} - {self.user.username}"
 
     def rebuild(self):
         params = {'user': self.user, 'asset': self.asset, 'active': True}

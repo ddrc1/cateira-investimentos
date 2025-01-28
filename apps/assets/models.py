@@ -107,4 +107,4 @@ class Dividend(models.Model):
         unique_together = ("asset", "date")
 
     def __str__(self):
-        return f"{self.asset} - {self.date}"
+        return f"{self.asset.code} - {self.date}"

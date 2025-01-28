@@ -3,7 +3,7 @@ from django.dispatch import receiver
 import inspect
 
 from .models import Audit
-from ..operations.models import Buy, Sell
+from ..operations.models import Buy, Sell, Custody, CustodyDividend, CustodySnapshot
 from ..assets.models import Asset, AssetPrice, AssetType, Dividend, Sector, SubSector
 from ..authentication.models import User
 
@@ -17,6 +17,9 @@ from ..authentication.models import User
 @receiver(pre_save, sender=AssetType)
 @receiver(pre_save, sender=AssetPrice)
 @receiver(pre_save, sender=Dividend)
+@receiver(pre_save, sender=Custody)
+@receiver(pre_save, sender=CustodyDividend)
+@receiver(pre_save, sender=CustodySnapshot)
 def check_update(sender, instance, **kwargs):
     if instance.pk is not None and not kwargs['raw']:
         try:
@@ -41,6 +44,9 @@ def check_update(sender, instance, **kwargs):
 @receiver(post_save, sender=AssetType)
 @receiver(post_save, sender=AssetPrice)
 @receiver(post_save, sender=Dividend)
+@receiver(post_save, sender=Custody)
+@receiver(post_save, sender=CustodyDividend)
+@receiver(post_save, sender=CustodySnapshot)
 def save_created(sender, instance, created, **kwargs):
     if created:
         try:
