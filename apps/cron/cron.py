@@ -65,12 +65,10 @@ def get_ticker_price_data():
             return
 
         if asset.prices.exists():
-            hist = tick.history(period="1d", start=asset.prices.last().date - timedelta(days=1))
+            hist = tick.history(period="1d", start=asset.prices.last().date + timedelta(days=1), end=datetime.today().date() - timedelta(days=1), interval='1d')
         else:
             hist: pd.DataFrame = tick.history(period='max', end=datetime.today().date() - timedelta(days=1), interval='1d')
             hist.dropna(inplace=True)
-        
-        hist
 
         if hist.empty:
             return
@@ -84,7 +82,7 @@ def get_ticker_price_data():
             price_objects = []
             for row in hist.itertuples():
                 price_objects.append(AssetPrice(open_price=row.Open, high_price=row.High, low_price=row.Low, close_price=row.Close, 
-                                                date=row.Index.date(), asset=asset))
+                                                date=row.Index.date(), volume=row.Volume, asset=asset))
                 if row.Dividends:
                     dividend: Dividend = asset.dividends.create(value=row.Dividends, date=row.Index.date())
                     add_dividends_to_users_custody(dividend)
