@@ -1,7 +1,6 @@
 from typing import Any, Dict, List
-from django.db.models import QuerySet
 from django.db import models
-from django.db.models import Value, F
+from django.db.models import Value, F, CheckConstraint, Q
 from django.utils.timezone import now
 from operator import itemgetter
 
@@ -18,6 +17,12 @@ class Buy(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True, null=False)
     active = models.BooleanField(null=False, default=True)
 
+    class Meta():
+        constraints = [
+            CheckConstraint(check=Q(volume__gte=0), name='buy_volume_non_negative'),
+            CheckConstraint(check=Q(price__gte=0), name='buy_price_non_negative')
+        ]
+
     @property
     def total(self) -> float:
         return self.volume * self.price
@@ -32,6 +37,12 @@ class Sell(models.Model):
     created_at = models.DateTimeField(auto_now=True, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, null=False)
     active = models.BooleanField(null=False, default=True)
+
+    class Meta():
+        constraints = [
+            CheckConstraint(check=Q(volume__gte=0), name='sell_volume_non_negative'),
+            CheckConstraint(check=Q(price__gte=0), name='sell_price_non_negative')
+        ]
 
     @property
     def total(self) -> float:
@@ -49,6 +60,10 @@ class Custody(models.Model):
 
     class Meta():
         unique_together = ('asset', 'user')
+        constraints = [
+            CheckConstraint(check=Q(volume__gte=0), name='custody_volume_non_negative'),
+            CheckConstraint(check=Q(total_cost__gte=0), name='custody_total_cost_non_negative')
+        ]
 
     def __str__(self):
         return f"{self.asset.code} - {self.user.username}"
@@ -106,13 +121,16 @@ class Custody(models.Model):
 class CustodyDividend(models.Model):
     custody = models.ForeignKey(Custody, null=False, on_delete=models.CASCADE, related_name='earned_dividends')
     dividend = models.ForeignKey(Dividend, null=False, on_delete=models.CASCADE)
-    volume = models.PositiveIntegerField(null=False, blank=False, default=0)
+    volume = models.FloatField(null=False, blank=False, default=0)
     created_at = models.DateTimeField(auto_now=True, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, null=False)
     active = models.BooleanField(null=False, default=True)
 
     class Meta():
         unique_together = ('custody', 'dividend')
+        constraints = [
+            CheckConstraint(check=Q(volume__gte=0), name='custody_dividend_volume_non_negative')
+        ]
 
     @property
     def amount_received(self):
@@ -122,7 +140,7 @@ class CustodyDividend(models.Model):
 class CustodySnapshot(models.Model):
     asset = models.ForeignKey(Asset, null=False, on_delete=models.CASCADE)
     date = models.DateField(null=False, default=now)
-    volume = models.PositiveIntegerField(null=False, default=0)
+    volume = models.FloatField(null=False, default=0)
     total_cost = models.FloatField(null=False, default=0)
     last_price = models.FloatField(null=False, default=0)
     mean_price = models.FloatField(null=False, default=0)
@@ -134,3 +152,12 @@ class CustodySnapshot(models.Model):
 
     class Meta():
         unique_together = ('asset', 'date')
+        constraints = [
+            CheckConstraint(check=Q(volume__gte=0), name='custody_snapshot_volume_non_negative'),
+            CheckConstraint(check=Q(total_cost__gte=0), name='custody_snapshot_total_cost_non_negative'),
+            CheckConstraint(check=Q(last_price__gte=0), name='custody_snapshot_last_price_non_negative'),
+            CheckConstraint(check=Q(mean_price__gte=0), name='custody_snapshot_mean_price_non_negative'),
+            CheckConstraint(check=Q(dividend_amount_received__gte=0), name='custody_snapshot_dividend_amount_received_non_negative'),
+            CheckConstraint(check=Q(total_value__gte=0), name='custody_snapshot_total_value_non_negative'),
+            CheckConstraint(check=Q(balance__gte=0), name='custody_snapshot_balance_non_negative')
+        ]

@@ -1,7 +1,7 @@
 from typing import Optional
 from django.db import models
 from datetime import datetime, timedelta
-from yfinance import Ticker
+from django.db.models import CheckConstraint, Q
 
 class Sector(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False, unique=True)
@@ -92,6 +92,9 @@ class AssetPrice(models.Model):
 
     class Meta():
         unique_together = ("asset", "date")
+        constraints = [
+            CheckConstraint(check=Q(volume__gte=0), name='asset_price_volume_non_negative')
+        ]
 
     @property
     def mean_price(self) -> float:
@@ -105,6 +108,9 @@ class Dividend(models.Model):
 
     class Meta():
         unique_together = ("asset", "date")
+        constraints = [
+            CheckConstraint(check=Q(value__gte=0), name='dividend_value_non_negative')
+        ]
 
     def __str__(self):
         return f"{self.asset.code} - {self.date}"
