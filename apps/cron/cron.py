@@ -92,5 +92,5 @@ def get_ticker_price_data():
             #TODO log error
             return
         
-    with ThreadPoolExecutor(max_workers=1) as executor:
+    with ThreadPoolExecutor(max_workers=2) as executor:
         executor.map(process, assets)
