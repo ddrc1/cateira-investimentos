@@ -3,6 +3,8 @@ from django.db.utils import IntegrityError
 from django.db import transaction
 
 from typing import Optional
+import os
+os.system("pip install --upgrade yfinance")
 from yfinance import Ticker
 import pandas as pd
 from datetime import timedelta, datetime
